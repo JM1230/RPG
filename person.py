@@ -2,7 +2,7 @@ from bcolors import bcolors
 import random
 
 class Person:
-    def __init__(self, name, cl, hp, mp, atk, power, magic, items):
+    def __init__(self, cl, hp, mp, atk, power, magic, items):
         self.maxhp = hp
         self.hp = hp
         self.maxmp = mp
