@@ -14,7 +14,7 @@ class Person:
         self.items = items
         self.action = ["Atak", "Umiejętności", "Przedmioty"]
         self.name = name
-        self.class = cl
+        self.cl = cl
 
     def generate_damage(self):
         return random.randrange(self.atklow, self.atkhigh)
