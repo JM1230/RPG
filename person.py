@@ -13,7 +13,6 @@ class Person:
         self.power = power
         self.items = items
         self.action = ["Atak", "Umiejętności", "Przedmioty"]
-        self.name = name
         self.cl = cl
 
     def generate_damage(self):
