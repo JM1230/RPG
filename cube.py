@@ -12,6 +12,6 @@ def cube(c):
         return x
 
     elif c == 3:
-        x = random.randrange(2, 31)
+        x = random.randrange(2, 26)
         print("Wyrzucona liczba oczek:", x)
         return x
