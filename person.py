@@ -2,14 +2,13 @@ from bcolors import bcolors
 import random
 
 class Person:
-    def __init__(self, name, cl, hp, mp, atk, df, magic, items):
+    def __init__(self, name, cl, hp, mp, atk, magic, items):
         self.maxhp = hp
         self.hp = hp
         self.maxmp = mp
         self.mp = mp
         self.atklow = atk - 10
         self.atkhigh = atk + 10
-        self.df = df
         self.magic = magic
         self.items = items
         self.action = ["Atak", "Umiejętności", "Przedmioty"]
