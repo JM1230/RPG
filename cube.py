@@ -1,4 +1,6 @@
 import random
 
 def cube():
-    print(random.randrange(2, 13))
+    x = random.randrange(2, 13)
+    print("Wyrzucona liczba oczek", x)
+    return x
