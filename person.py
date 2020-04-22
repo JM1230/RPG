@@ -2,7 +2,7 @@ from bcolors import bcolors
 import random
 
 class Person:
-    def __init__(self, name, class, hp, mp, atk, df, magic, items):
+    def __init__(self, name, cl, hp, mp, atk, df, magic, items):
         self.maxhp = hp
         self.hp = hp
         self.maxmp = mp
@@ -14,7 +14,7 @@ class Person:
         self.items = items
         self.action = ["Atak", "Umiejętności", "Przedmioty"]
         self.name = name
-        self.class = class
+        self.class = cl
 
     def generate_damage(self):
         return random.randrange(self.atklow, self.atkhigh)
