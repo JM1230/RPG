@@ -78,9 +78,9 @@ def description(c):
             print(bcolors.BOLD + "\nBłyskawica" + bcolors.ENDC)
             print(bcolors.RED + "\tObrażenia:   300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  35" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUleczenie" + bcolors.ENDC)
-            print(bcolors.RED + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
+            print(bcolors.GREEN + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUzdrowienie" + bcolors.ENDC)
-            print(bcolors.RED + "\tRegeneracja: MAXIMUM" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  150" + bcolors.ENDC)
+            print(bcolors.GREEN + "\tRegeneracja: MAXIMUM" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  150" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break
@@ -96,7 +96,7 @@ def description(c):
             print(bcolors.BOLD + "\nOgłuszający Krzyk" + bcolors.ENDC)
             print(bcolors.RED + "\tObrażenia:   Zależne od obecnego HP bohatera" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  0" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUleczenie" + bcolors.ENDC)
-            print(bcolors.RED + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
+            print(bcolors.GREEN + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break
