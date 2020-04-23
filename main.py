@@ -18,7 +18,7 @@ penetration = Spell("Penetracja", 80, 650, "black")
 assassination = Spell("Natychmiastowe zabójstwo", 230, 9999999999999999999999999999, "black")  # 20% szans na powodzenie
 shout = Spell("Ogłuszający Krzyk", 0, 100, "black")                                            # Obrażenia umiejętności są zależne od obecnego HP bohatera
 carnage = Spell("Rzeź", 30, 245, "black")
-stone_fists = Spell("Kamienne Pięści", 25, 200, "black")
+stone_fists = Spell("Kamienne Pięści", 50, 245, "black")
 cure = Spell("Uleczenie", 50, 500, "white")
 heal = Spell("Uzdrowienie", 150, 9999999999999999999999999999999, "white")
 
