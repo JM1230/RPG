@@ -2,6 +2,7 @@ from person import Person
 from magic import Spell
 from inventory import Item
 from player import Player
+from description import description
 from cube import cube
 from bcolors import bcolors
 
@@ -38,6 +39,25 @@ assassin = Person("Skrytobójca", 3100, 230, 155, 45, {smite, tempest, penetrati
 paladin = Person("Paladyn", 4000, 250, 80, 30, {power_hit, ignite, meteor, thunder, heal, cure}, player_items)
 tank = Person("Obrońca", 5550, 50, 50, 0, {shout, cure}, player_items)
 rogue = Person("Łotrzyk", 3750, 150, 175, 20, {power_hit, carnage, stone_fists}, player_items)
+
+# Menu
+while 1:
+    print(bcolors.BOLD + "Klasy postaci: " + bcolors.ENDC)
+    print("[1] Wojownik")
+    print("[2] Mag")
+    print("[3] Skrytobójca")
+    print("[4] Paladyn")
+    print("[5] Obrońca")
+    print("[6] Łotrzyk")
+    print("\n[Dowolny Przycisk] Start")
+
+    c = input()
+
+    if c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6':
+        description(c)
+
+    else:
+        break
 
 # Inicjacja graczy
 players_quantity = int(input(bcolors.BOLD + "Podaj ilość graczy(1-5): " + bcolors.ENDC))
@@ -104,3 +124,5 @@ print(bcolors.BOLD + "Gracz", "\t\t", "Klasa" + bcolors.ENDC)
 
 for i in range(len(players)):
     print(players[i].nickname, "\t\t", players[i].character.cl)
+
+    
