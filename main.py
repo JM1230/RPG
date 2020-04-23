@@ -25,7 +25,7 @@ heal = Spell("Uzdrowienie", 150, 9999999999999999999999999999999, "white")
 # Przedmioty
 health_potion = Item("Mikstura zdrowia", "potion", "Przywraca 150 HP", 150)
 mana_potion = Item("Mikstura many", "potion", "Przywraca 50 MP", 50)
-grenade = Item("Granat", "attack", "Zadaje 400 DMG", 400)
+grenade = Item("Granat", "attack", "Zadaje 300 DMG", 300)
 
 player_items = [{"item": health_potion, "quantity": 2},
                 {"item": mana_potion, "quantity": 2},
