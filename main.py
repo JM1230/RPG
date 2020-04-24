@@ -71,47 +71,47 @@ i = 1
 while i <= players_quantity:
     name = str(input(bcolors.BOLD + "Gracz " + str(i) + ": " + bcolors.ENDC))
     print(bcolors.BOLD + "Wybierz klasę swojej postaci:" + bcolors.ENDC)
-    print("[1]Wojownik")
-    print("[2]Mag")
-    print("[3]Skrytobójca")
-    print("[4]Paladyn")
-    print("[5]Obrońca")
-    print("[6]Łotrzyk")
+    print("[1] Wojownik")
+    print("[2] Mag")
+    print("[3] Skrytobójca")
+    print("[4] Paladyn")
+    print("[5] Obrońca")
+    print("[6] Łotrzyk")
 
     while 1:
-        character = int(input())
+        character = input()
 
-        if character == 1:
+        if character == '1':
             player = Player(name, warrior)
             players.append(player)
             i += 1
             break
 
-        elif character == 2:
+        elif character == '2':
             player = Player(name, sorcerer)
             players.append(player)
             i += 1
             break
 
-        elif character == 3:
+        elif character == '3':
             player = Player(name, assassin)
             players.append(player)
             i += 1
             break
 
-        elif character == 4:
+        elif character == '4':
             player = Player(name, paladin)
             players.append(player)
             i += 1
             break
 
-        elif character == 5:
+        elif character == '5':
             player = Player(name, tank)
             players.append(player)
             i += 1
             break
 
-        elif character == 6:
+        elif character == '6':
             player = Player(name, rogue)
             players.append(player)
             i += 1
