@@ -80,7 +80,7 @@ def description(c):
             print(bcolors.BOLD + "\nUleczenie" + bcolors.ENDC)
             print(bcolors.GREEN + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUzdrowienie" + bcolors.ENDC)
-            print(bcolors.GREEN + "\tRegeneracja: MAXIMUM" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  150" + bcolors.ENDC)
+            print(bcolors.GREEN + "\tRegeneracja: MAXIMUM" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  200" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break
