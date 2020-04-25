@@ -173,4 +173,10 @@ while running:
         print(bcolors.BOLD + player.nickname + ":" + bcolors.ENDC)
         player.character.get_stats()
 
+    print("\n")
+
+    for enemy in foe:
+        print(bcolors.BOLD + enemy.cl + ":" + bcolors.ENDC)
+        enemy.get_enemy_stats()
+
     running = False
