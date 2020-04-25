@@ -31,6 +31,11 @@ class Player:
         if self.hp > self.maxhp:
             self.hp = self.maxhp
 
+    def mana_restore(self, dmg):
+        self.mp += dmg
+        if self.mp > self.maxmp:
+            self.mp = self.maxmp
+
     def get_hp(self):
         return self.hp
 

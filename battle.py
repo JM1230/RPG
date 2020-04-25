@@ -55,9 +55,9 @@ def battle(foe, ally):
 
                 if spell.type == "white":
                     player.heal(magic_dmg)
-                    
+
                     if magic_dmg > player.maxhp:
-                        magic_dmg = player.maxhp
+                        magic_dmg = player.maxhp - magic_dmg
 
                     print(bcolors.BOLD + player.nickname + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(magic_dmg), " HP" + bcolors.ENDC)
 
@@ -90,6 +90,39 @@ def battle(foe, ally):
                     else:
                         foe[enemy].take_damage(magic_dmg)
                         print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl + bcolors.ENDC)
+
+                    if foe[enemy].get_hp() == 0:
+                        print(foe[enemy].character.cl, "został pokonany!")
+                        del foe[enemy]
+
+            elif index == 2:
+                player.choose_item()
+                item_choice = int(input("\tWybierz przedmiot: ")) - 1
+
+                if item_choice == -1:
+                    continue
+
+                item = player.items[item_choice]["item"]
+
+                if player.items[item_choice]["quantity"] == 0:
+                    print(bcolors.RED + "\n" + "Brak..." + bcolors.ENDC)
+                    continue
+
+                player.items[item_choice]["quantity"] -= 1
+
+                if item.type == "potion":
+                    if item.name == "Mikstura zdrowia":
+                        player.heal(item.prop)
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.GREEN + "\n" + item.name + " przywraca", str(item.prop), "HP" + bcolors.ENDC)
+
+                    elif item.name == "Mikstura many":
+                        player.mana_restore(item.prop)
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + "\n" + item.name + " przywraca", str(item.prop), "MP" + bcolors.ENDC)
+
+                elif item.type == "attack":
+                    enemy = player.choose_target(foe)
+                    foe[enemy].take_damage(item.prop)
+                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + item.name + ": " + bcolors.ENDC + str(item.prop) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl + bcolors.ENDC)
 
                     if foe[enemy].get_hp() == 0:
                         print(foe[enemy].character.cl, "został pokonany!")
