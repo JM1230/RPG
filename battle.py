@@ -12,12 +12,23 @@ def battle(foe, ally):
 
         for player in ally:
             print(bcolors.BOLD + player.nickname + ":" + bcolors.ENDC)
-            player.character.get_stats()
+            player.get_stats()
 
         print("\n")
 
         for enemy in foe:
-            print(bcolors.BOLD + enemy.cl + ":" + bcolors.ENDC)
+            print(bcolors.BOLD + enemy.character.cl + ":" + bcolors.ENDC)
             enemy.get_enemy_stats()
 
-        running = False
+        print("\n")
+
+        for player in ally:
+            player.choose_action()
+            choice = input("\tWybierz akcje: ")
+            index = int(choice) - 1
+
+            if index == 0:
+                dmg = player.generate_damage()
+                enemy = player.choose_target(foe)
+                foe[enemy].take_damage(dmg)
+                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + str(dmg) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl)

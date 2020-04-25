@@ -140,10 +140,12 @@ for i in range(len(players)):
 q1 = random.randrange(0, 3)
 i = 0
 foe = []
+foe_list = [{}, {}, {}]
 
 while i <= q1:
     enemy = random.choice(enemies)
-    foe.append(enemy)
+    foe_list[i] = Player(i, enemy)
+    foe.append(foe_list[i])
     i += 1
 
 q2 = random.randrange(0, players_quantity)      # tymczasowo do testów - gracze nie będą losowani
