@@ -144,7 +144,7 @@ foe_list = [{}, {}, {}]
 
 while i <= q1:
     enemy = random.choice(enemies)
-    foe_list[i] = Player({}, enemy)
+    foe_list[i] = Player([], enemy)
     foe.append(foe_list[i])
     i += 1
 
