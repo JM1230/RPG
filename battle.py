@@ -55,6 +55,10 @@ def battle(foe, ally):
 
                 if spell.type == "white":
                     player.heal(magic_dmg)
+                    
+                    if magic_dmg > player.maxhp:
+                        magic_dmg = player.maxhp
+
                     print(bcolors.BOLD + player.nickname + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(magic_dmg), " HP" + bcolors.ENDC)
 
                 elif spell.type == "black":
