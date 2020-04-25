@@ -96,7 +96,7 @@ def description(c):
             print(bcolors.BOLD + "\nOgłuszający Krzyk" + bcolors.ENDC)
             print(bcolors.RED + "\tObrażenia:   Zależne od obecnego HP bohatera" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  0" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUleczenie" + bcolors.ENDC)
-            print(bcolors.GREEN + "\tRegeneracja: 500" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
+            print(bcolors.GREEN + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break

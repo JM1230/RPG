@@ -5,6 +5,7 @@ from player import Player
 from description import description
 from cube import cube
 from bcolors import bcolors
+import random
 
 # Umiejętności
 power_hit = Spell("Potężne Uderzenie", 20, 155, "black")
@@ -39,6 +40,13 @@ assassin = Person("Skrytobójca", 3100, 230, 155, 45, {smite, tempest, penetrati
 paladin = Person("Paladyn", 4000, 250, 80, 30, {power_hit, ignite, meteor, thunder, heal, cure}, player_items)
 tank = Person("Obrońca", 5550, 50, 50, 0, {shout, cure}, player_items)
 rogue = Person("Łotrzyk", 3750, 150, 175, 20, {power_hit, carnage, stone_fists}, player_items)
+
+# Przeciwnicy (tymczasowo)
+imp = Person("Imp", 2000, 100, 55, 0, {}, {})
+demon = Person("Demon", 8000, 300, 50, 0, {fireball, cure}, {})
+orc = Person("Ork", 7000, 150, 100, 0, {power_hit}, {})
+
+enemies = [imp, demon, orc]
 
 # Menu
 while 1:
@@ -125,4 +133,44 @@ print(bcolors.BOLD + "Gracz", "\t\t", "Klasa" + bcolors.ENDC)
 for i in range(len(players)):
     print(players[i].nickname, "\t\t", players[i].character.cl)
 
-    
+# HISTORIA (tymczasowo brak, ale w tym miejscu musi zostać pierwszy raz wywołana)
+
+# Walka (tymczasowo - Walczyć będą ci gracze, którzy aktualnie znajdują się na polu, na którym wystąpiło zdarzenie walki[albo wszyscy, albo tylko jeden, później sie zdecyduje])
+q1 = random.randrange(0, 3)
+i = 0
+foe = []
+
+while i <= q1:
+    enemy = random.choice(enemies)
+    foe.append(enemy)
+    i += 1
+
+q2 = random.randrange(0, players_quantity)      # tymczasowo do testów - gracze nie będą losowani
+i = 0
+ally = []
+
+while i <= q2:
+    player = random.choice(players)
+    ally.append(player)
+
+    if i != 0:
+        if ally[i] == ally[i - 1]:
+            del ally[i]
+        else:
+            i += 1
+    else:
+        i += 1
+
+print(bcolors.BOLD + bcolors.RED + "\nWALKA\n" + bcolors.ENDC)
+i = 0
+running = True
+
+while running:
+    print("===============================\n\n")
+    print("           HP                                         MP")
+
+    for player in ally:
+        print(bcolors.BOLD + player.nickname + ":" + bcolors.ENDC)
+        player.character.get_stats()
+
+    running = False
