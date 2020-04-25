@@ -1,5 +1,3 @@
-from person import Person
-from player import Player
 from bcolors import bcolors
 import random
 
