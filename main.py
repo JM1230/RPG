@@ -43,7 +43,7 @@ tank = Person("Obrońca", 5550, 50, 50, 0, [shout, cure], player_items)
 rogue = Person("Łotrzyk", 3750, 150, 175, 20, [power_hit, carnage, stone_fists], player_items)
 
 # Przeciwnicy (tymczasowo)
-imp = Person("Imp", 2000, 100, 55, 0, [], [])
+imp = Person("Imp", 2000, 100, 55, 0, [ignite], [])
 demon = Person("Demon", 8000, 300, 50, 0, [fireball, cure], [])
 orc = Person("Ork", 7000, 150, 100, 0, [power_hit], [])
 

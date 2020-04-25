@@ -3,6 +3,9 @@ import random
 
 def battle(foe, ally):
     print(bcolors.BOLD + bcolors.RED + "\nWALKA\n" + bcolors.ENDC)
+    alive = int(len(ally))
+    defeated_enemies = 0
+    defeated_players = 0
     running = True
 
     while running:
@@ -22,6 +25,7 @@ def battle(foe, ally):
         print("\n")
 
         for player in ally:
+            print(bcolors.BOLD + player.nickname + ": " + bcolors.ENDC)
             player.choose_action()
             choice = input("\tWybierz akcje: ")
             index = int(choice) - 1
@@ -33,8 +37,13 @@ def battle(foe, ally):
                 print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl + bcolors.ENDC)
 
                 if foe[enemy].get_hp() == 0:
-                    print(foe[enemy], "został pokonany!")
+                    print(foe[enemy].character.cl, "został pokonany!")
                     del foe[enemy]
+                    defeated_enemies += 1
+
+                    if defeated_enemies == int(len(foe)) + 1:
+                        print(bcolors.GREEN + "Sukces!" + bcolors.ENDC)
+                        running = False
 
             elif index == 1:
                 player.choose_magic()
@@ -94,6 +103,11 @@ def battle(foe, ally):
                     if foe[enemy].get_hp() == 0:
                         print(foe[enemy].character.cl, "został pokonany!")
                         del foe[enemy]
+                        defeated_enemies += 1
+
+                        if defeated_enemies == int(len(foe)) + 1:
+                            print(bcolors.GREEN + "Sukces!" + bcolors.ENDC)
+                            running = False
 
             elif index == 2:
                 player.choose_item()
@@ -127,3 +141,56 @@ def battle(foe, ally):
                     if foe[enemy].get_hp() == 0:
                         print(foe[enemy].character.cl, "został pokonany!")
                         del foe[enemy]
+                        defeated_enemies += 1
+
+                        if defeated_enemies == int(len(foe)) + 1:
+                            print(bcolors.GREEN + "Sukces!" + bcolors.ENDC)
+                            running = False
+
+
+
+        for enemy in foe:
+            enemy_choice = random.randrange(0, 2)
+
+            if enemy_choice == 0:
+                target = random.randrange(0, alive)
+                enemy_dmg = enemy.generate_damage()
+                ally[target].take_damage(enemy_dmg)
+                print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(enemy_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC)
+
+                if ally[target].get_hp() == 0:
+                    print(ally[target].nickname, "został pokonany!")
+                    del ally[target]
+                    alive -= 1
+                    defeated_players += 1
+
+                    if defeated_players == int(len(ally)) + 1:
+                        print(bcolors.RED + "Przeciwnicy zwyciężają!" + bcolors.ENDC)
+                        running = False
+
+            elif enemy_choice == 1:
+                spell, magic_dmg = enemy.choose_enemy_spell()
+                enemy.reduce_mp(spell.cost)
+                current_mp = enemy.get_mp()
+
+                if spell.cost > current_mp:
+                    continue
+
+                if spell.type == "white":
+                    enemy.heal(magic_dmg)
+                    print(bcolors.BOLD + enemy.character.cl + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(magic_dmg), " HP" + bcolors.ENDC)
+
+                elif spell.type == "black":
+                    target = random.randrange(0, alive)
+                    ally[target].take_damage(magic_dmg)
+                    print(bcolors.BOLD + enemy.character.cl + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC)
+
+                    if ally[target].get_hp() == 0:
+                        print(ally[target].nickname, "został pokonany!")
+                        del ally[target]
+                        alive -= 1
+                        defeated_players += 1
+
+                        if defeated_players == int(len(ally)) + 1:
+                            print(bcolors.RED + "Przeciwnicy zwyciężają!" + bcolors.ENDC)
+                            running = False
