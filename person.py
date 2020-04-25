@@ -46,34 +46,34 @@ class Person:
 
     def choose_action(self):
         i = 1
-        print(bcolors.BLUE + bcolors.BOLD + "    AKCJE:" + bcolors.ENDC)
+        print(bcolors.BLUE + bcolors.BOLD + "\tAKCJE:" + bcolors.ENDC)
         for item in self.action:
             print("        " + str(i) + ":", item)
             i += 1
 
     def choose_magic(self):
         i = 1
-        print("\n" + bcolors.BLUE + bcolors.BOLD + "    UMIEJĘTNOŚCI:" + bcolors.ENDC)
+        print("\n" + bcolors.BLUE + bcolors.BOLD + "\tUMIEJĘTNOŚCI:" + bcolors.ENDC)
         for spell in self.magic:
             print("        " + str(i) + ":", spell.name, "(koszt:", str(spell.cost) + ")")
             i += 1
 
     def choose_item(self):
         i = 1
-        print("\n" + bcolors.GREEN + bcolors.BOLD + "    ITEMS:" + bcolors.ENDC)
+        print("\n" + bcolors.GREEN + bcolors.BOLD + "\tPRZEDMIOTY:" + bcolors.ENDC)
         for item in self.items:
             print("        " + str(i) + ":", item["item"].name + ":", item["item"].description, "(x" + str(item["quantity"]) + ")")
             i += 1
 
     def choose_target(self, enemies):
         i = 1
-        print("\n" + bcolors.RED + bcolors.BOLD + "    TARGET:" + bcolors.ENDC)
+        print("\n" + bcolors.RED + bcolors.BOLD + "\tCEL:" + bcolors.ENDC)
         for enemy in enemies:
             if enemy.get_hp() != 0:
-                print("        " + str(i) + ".", enemy.name)
+                print("        " + str(i) + ".", enemy.cl)
                 i += 1
 
-        choice = int(input("    Choose target: ")) - 1
+        choice = int(input("\tWybierz cel: ")) - 1
         return choice
 
     def get_enemy_stats(self):
