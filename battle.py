@@ -3,7 +3,6 @@ import random
 
 def battle(foe, ally):
     print(bcolors.BOLD + bcolors.RED + "\nWALKA\n" + bcolors.ENDC)
-    i = 0
     running = True
 
     while running:
@@ -31,7 +30,7 @@ def battle(foe, ally):
                 dmg = player.generate_damage()
                 enemy = player.choose_target(foe)
                 foe[enemy].take_damage(dmg)
-                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + str(dmg) + bcolors.ENDC + " DMG => " + bcolors.BOLD + foe[enemy].character.cl)
+                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl + bcolors.ENDC)
 
                 if foe[enemy].get_hp() == 0:
                     print(foe[enemy], "został pokonany!")
@@ -60,8 +59,33 @@ def battle(foe, ally):
 
                 elif spell.type == "black":
                     enemy = player.choose_target(foe)
-                    foe[enemy].take_damage(magic_dmg)
-                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + str(magic_dmg) + bcolors.ENDC + " DMG => " + bcolors.BOLD + foe[enemy].character.cl)
+
+                    if spell.name == "Natychmiastowe zabójstwo":
+                        chance_list = [0, 1, 2, 3, 4]
+                        chance = random.choice(chance_list)
+
+                        if chance == 0:
+                            foe[enemy].take_damage(magic_dmg)
+                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                        else:
+                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                            dmg = int(player.get_hp() / 4)
+                            player.take_damage(dmg)
+
+                    elif spell.name == "Ogłuszający Krzyk":
+                        if player.get_hp() == player.maxhp:
+                            dmg = 180
+
+                        else:
+                            dmg = magic_dmg + int(0.01 * player.get_hp())
+
+                        foe[enemy].take_damage(dmg)
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl + bcolors.ENDC)
+
+                    else:
+                        foe[enemy].take_damage(magic_dmg)
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl + bcolors.ENDC)
 
                     if foe[enemy].get_hp() == 0:
                         print(foe[enemy].character.cl, "został pokonany!")
