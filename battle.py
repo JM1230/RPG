@@ -82,7 +82,7 @@ def battle(foe, ally):
                             dmg = 180
 
                         else:
-                            dmg = magic_dmg + int(0.01 * player.get_hp())
+                            dmg = int(0.03 * player.get_hp())
 
                         foe[enemy].take_damage(dmg)
                         print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + foe[enemy].character.cl + bcolors.ENDC)
