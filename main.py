@@ -35,17 +35,17 @@ player_items = [{"item": health_potion, "quantity": 2},
                 {"item": grenade, "quantity": 1}]
 
 # Klasy postaci
-warrior = Person("Wojownik", 4500, 70, 110, 10, {power_hit, smash}, player_items)
-sorcerer = Person("Mag", 3000, 350, 20, 150, {ignite, meteor, smite, thunder, fireball}, player_items)
-assassin = Person("Skrytobójca", 3100, 230, 155, 45, {smite, tempest, penetration, assassination}, player_items)
-paladin = Person("Paladyn", 4000, 250, 80, 30, {power_hit, ignite, meteor, thunder, heal, cure}, player_items)
-tank = Person("Obrońca", 5550, 50, 50, 0, {shout, cure}, player_items)
-rogue = Person("Łotrzyk", 3750, 150, 175, 20, {power_hit, carnage, stone_fists}, player_items)
+warrior = Person("Wojownik", 4500, 70, 110, 10, [power_hit, smash], player_items)
+sorcerer = Person("Mag", 3000, 350, 20, 150, [ignite, meteor, smite, thunder, fireball], player_items)
+assassin = Person("Skrytobójca", 3100, 230, 155, 45, [smite, tempest, penetration, assassination], player_items)
+paladin = Person("Paladyn", 4000, 250, 80, 30, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank = Person("Obrońca", 5550, 50, 50, 0, [shout, cure], player_items)
+rogue = Person("Łotrzyk", 3750, 150, 175, 20, [power_hit, carnage, stone_fists], player_items)
 
 # Przeciwnicy (tymczasowo)
-imp = Person("Imp", 2000, 100, 55, 0, {}, {})
-demon = Person("Demon", 8000, 300, 50, 0, {fireball, cure}, {})
-orc = Person("Ork", 7000, 150, 100, 0, {power_hit}, {})
+imp = Person("Imp", 2000, 100, 55, 0, [], [])
+demon = Person("Demon", 8000, 300, 50, 0, [fireball, cure], [])
+orc = Person("Ork", 7000, 150, 100, 0, [power_hit], [])
 
 enemies = [imp, demon, orc]
 
@@ -144,7 +144,7 @@ foe_list = [{}, {}, {}]
 
 while i <= q1:
     enemy = random.choice(enemies)
-    foe_list[i] = Player(i, enemy)
+    foe_list[i] = Player({}, enemy)
     foe.append(foe_list[i])
     i += 1
 
