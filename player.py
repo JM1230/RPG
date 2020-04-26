@@ -12,9 +12,11 @@ class Player:
         self.atklow = character.atklow
         self.atkhigh = character.atkhigh
         self.power = character.power
+        self.dodge = character.dodge
         self.magic = character.magic
         self.items = character.items
         self.action = character.action
+        self.buff = character.buff
 
     def take_damage(self, dmg):
         self.hp -= dmg
@@ -50,6 +52,13 @@ class Player:
 
     def reduce_mp(self, cost):
         self.mp -= cost
+
+    def dodge_chance(self):
+        chance = random.randrange(0, 100)
+        self.dodge = chance
+
+    def get_dodge_chance(self):
+        return self.dodge
 
     def choose_action(self):
         i = 1

@@ -15,12 +15,14 @@ def battle(foe, ally):
         for player in ally:
             print(bcolors.BOLD + player.nickname + ":" + bcolors.ENDC)
             player.get_stats()
+            player.dodge_chance()
 
         print("\n")
 
         for enemy in foe:
             print(bcolors.BOLD + enemy.character.cl + ":" + bcolors.ENDC)
             enemy.get_enemy_stats()
+            enemy.dodge_chance()
 
         print("\n")
 
@@ -34,11 +36,18 @@ def battle(foe, ally):
                 if index == 0:
                     dmg = player.generate_damage()
                     enemy = player.choose_target(foe)
+                    if foe[enemy].get_dodge_chance() >= 0 and foe[enemy].get_dodge_chance() < 13:
+                        dmg = 0
+                        dodge_string = "(Unik)"
+
+                    else:
+                        dodge_string = ""
+
                     foe[enemy].take_damage(dmg)
-                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC)
+                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC, str(dodge_string))
 
                     if foe[enemy].get_hp() == 0:
-                        print(foe[enemy].character.cl, "został pokonany!")
+                        print(bcolors.GREEN + foe[enemy].character.cl, "został pokonany!" + bcolors.ENDC)
                         del foe[enemy]
                         defeated_enemies += 1
 
@@ -82,39 +91,137 @@ def battle(foe, ally):
                         enemy = player.choose_target(foe)
 
                         if spell.name == "Natychmiastowe zabójstwo":
-                            chance = random.randrange(0, 5)
-
-                            if chance == 0:
-                                foe[enemy].take_damage(magic_dmg)
-                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                            else:
+                            chance = random.randrange(0, 10)
+                            if foe[enemy].get_hp() == foe[enemy].get_max_hp():
                                 print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
                                 dmg = int(player.get_hp() / 4)
                                 player.take_damage(dmg)
 
-                        elif spell.name == "Ogłuszający Krzyk":
-                            if player.get_hp() == player.maxhp:
-                                dmg = 180
+                            elif foe[enemy].get_hp() <= int(0.9 * foe[enemy].get_max_hp()):
+                                if foe[enemy].get_hp() <= int(0.8 * foe[enemy].get_max_hp()):
+                                    if foe[enemy].get_hp() <= int(0.7 * foe[enemy].get_max_hp()):
+                                        if foe[enemy].get_hp() <= int(0.6 * foe[enemy].get_max_hp()):
+                                            if foe[enemy].get_hp() <= int(0.5 * foe[enemy].get_max_hp()):
+                                                if foe[enemy].get_hp() <= int(0.4 * foe[enemy].get_max_hp()):
+                                                    if foe[enemy].get_hp() <= int(0.3 * foe[enemy].get_max_hp()):
+                                                        if foe[enemy].get_hp() <= int(0.2 * foe[enemy].get_max_hp()):
+                                                            if foe[enemy].get_hp() <= int(0.1 * foe[enemy].get_max_hp()):
+                                                                if chance >= 0 and chance < 9:
+                                                                    foe[enemy].take_damage(magic_dmg)
+                                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                                                else:
+                                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                                                    dmg = int(player.get_hp() / 4)
+                                                                    player.take_damage(dmg)
+                                                        else:
+                                                            if chance >= 0 and chance < 8:
+                                                                foe[enemy].take_damage(magic_dmg)
+                                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                                            else:
+                                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                                                dmg = int(player.get_hp() / 4)
+                                                                player.take_damage(dmg)
+                                                    else:
+                                                        if chance >= 0 and chance < 7:
+                                                            foe[enemy].take_damage(magic_dmg)
+                                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                                        else:
+                                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                                            dmg = int(player.get_hp() / 4)
+                                                            player.take_damage(dmg)
+                                                else:
+                                                    if chance >= 0 and chance < 6:
+                                                        foe[enemy].take_damage(magic_dmg)
+                                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                                    else:
+                                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                                        dmg = int(player.get_hp() / 4)
+                                                        player.take_damage(dmg)
+                                            else:
+                                                if chance >= 0 and chance < 5:
+                                                    foe[enemy].take_damage(magic_dmg)
+                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                                else:
+                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                                    dmg = int(player.get_hp() / 4)
+                                                    player.take_damage(dmg)
+                                        else:
+                                            if chance >= 0 and chance < 4:
+                                                foe[enemy].take_damage(magic_dmg)
+                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                            else:
+                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                                dmg = int(player.get_hp() / 4)
+                                                player.take_damage(dmg)
+                                    else:
+                                        if chance >= 0 and chance < 3:
+                                            foe[enemy].take_damage(magic_dmg)
+                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                        else:
+                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                            dmg = int(player.get_hp() / 4)
+                                            player.take_damage(dmg)
+                                else:
+                                    if chance == 0 or chance == 1:
+                                        foe[enemy].take_damage(magic_dmg)
+                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                    else:
+                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                        dmg = int(player.get_hp() / 4)
+                                        player.take_damage(dmg)
+                            else:
+                                if chance == 0:
+                                    foe[enemy].take_damage(magic_dmg)
+                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+
+                                else:
+                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
+                                    dmg = int(player.get_hp() / 4)
+                                    player.take_damage(dmg)
+
+                        elif spell.name == "'Tanio skóry nie sprzedam'":
+                            if foe[enemy].get_dodge_chance() >= 0 and foe[enemy].get_dodge_chance() < 13:
+                                dmg = 0
+                                dodge_string = "(Unik)"
 
                             else:
-                                dmg = int(0.03 * player.get_hp())
+                                dmg = int(0.15 * player.get_hp())
+                                dodge_string = ""
 
                             foe[enemy].take_damage(dmg)
-                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC)
+                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC, str(dodge_string))
 
                         else:
+                            if foe[enemy].get_dodge_chance() >= 0 and foe[enemy].get_dodge_chance() < 13:
+                                magic_dmg = 0
+                                dodge_string = "(Unik)"
+
+                            else:
+                                dodge_string = ""
+
                             foe[enemy].take_damage(magic_dmg)
-                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC)
+                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC, str(dodge_string))
 
                         if foe[enemy].get_hp() == 0:
-                            print(foe[enemy].character.cl, "został pokonany!")
+                            print(bcolors.GREEN + foe[enemy].character.cl, "został pokonany!" + bcolors.ENDC)
                             del foe[enemy]
                             defeated_enemies += 1
 
                             if defeated_enemies == int(len(foe)) + 1:
                                 print(bcolors.GREEN + "Sukces!" + bcolors.ENDC)
                                 running = False
+                        break
+
+                    elif spell.type == "block":
+                        player.dodge = 101
                         break
 
                 elif index == 2:
@@ -139,9 +246,16 @@ def battle(foe, ally):
 
                     if item.type == "potion":
                         if item.name == "Mikstura zdrowia":
-                            player.heal(item.prop)
-                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.GREEN + "\n" + item.name + " przywraca", str(item.prop), "HP" + bcolors.ENDC)
-                            break
+                            if player.character.buff == "Woda":
+                                regeneration = int((item.prop / 10) + item.prop)
+                                player.heal(regeneration)
+                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.GREEN + "\n" + item.name + " przywraca", str(regeneration), "HP" + bcolors.ENDC)
+                                break
+
+                            else:
+                                player.heal(item.prop)
+                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.GREEN + "\n" + item.name + " przywraca", str(item.prop), "HP" + bcolors.ENDC)
+                                break
 
                         elif item.name == "Mikstura many":
                             player.mana_restore(item.prop)
@@ -150,11 +264,19 @@ def battle(foe, ally):
 
                     elif item.type == "attack":
                         enemy = player.choose_target(foe)
-                        foe[enemy].take_damage(item.prop)
-                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + item.name + ": " + bcolors.ENDC + str(item.prop) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC)
+                        if foe[enemy].get_dodge_chance() >= 0 and foe[enemy].get_dodge_chance() < 13:
+                            dmg = 0
+                            dodge_string = "(Unik)"
+
+                        else:
+                            dmg = item.prop
+                            dodge_string = ""
+
+                        foe[enemy].take_damage(dmg)
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.YELLOW + item.name + ": " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC, str(dodge_string))
 
                         if foe[enemy].get_hp() == 0:
-                            print(foe[enemy].character.cl, "został pokonany!")
+                            print(bcolors.GREEN + foe[enemy].character.cl, "został pokonany!" + bcolors.ENDC)
                             del foe[enemy]
                             defeated_enemies += 1
 
@@ -166,15 +288,29 @@ def battle(foe, ally):
         for enemy in foe:
             while 1:
                 enemy_choice = random.randrange(0, 2)
-
                 if enemy_choice == 0:
                     target = random.randrange(0, alive)
                     enemy_dmg = enemy.generate_damage()
+                    dodge_endline = 13
+                    if ally[target].get_dodge_chance() == 101:
+                        ally[target].dodge_chance()
+                        dodge_endline += 67
+
+                    if ally[target].chcarcter.buff == "Wiatr":
+                        dodge_endline += 15
+
+                    if ally[target].get_dodge_chance >= 0 and ally[target].get_dodge_chance < dodge_endline:
+                        enemy_dmg = 0
+                        dodge_string = "(Unik)"
+
+                    else:
+                        dodge_string = ""
+
                     ally[target].take_damage(enemy_dmg)
-                    print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(enemy_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC)
+                    print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(enemy_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC, str(dodge_string))
 
                     if ally[target].get_hp() == 0:
-                        print(ally[target].nickname, "został pokonany!")
+                        print(bcolors.RED + ally[target].nickname, "został pokonany!" + bcolors.ENDC)
                         del ally[target]
                         alive -= 1
                         defeated_players += 1
@@ -199,11 +335,26 @@ def battle(foe, ally):
 
                     elif spell.type == "black":
                         target = random.randrange(0, alive)
+                        dodge_endline = 13
+                        if ally[target].get_dodge_chance() == 101:
+                            ally[target].dodge_chance()
+                            dodge_endline += 67
+
+                        if ally[target].chcarcter.buff == "Wiatr":
+                            dodge_endline += 15
+
+                        if ally[target].get_dodge_chance >= 0 and ally[target].get_dodge_chance < dodge_endline:
+                            magic_dmg = 0
+                            dodge_string = "(Unik)"
+
+                        else:
+                            dodge_string = ""
+
                         ally[target].take_damage(magic_dmg)
-                        print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC)
+                        print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC, str(dodge_string))
 
                         if ally[target].get_hp() == 0:
-                            print(ally[target].nickname, "został pokonany!")
+                            print(bcolors.RED + ally[target].nickname, "został pokonany!" + bcolors.ENDC)
                             del ally[target]
                             alive -= 1
                             defeated_players += 1
@@ -212,3 +363,24 @@ def battle(foe, ally):
                                 print(bcolors.RED + "Przeciwnicy zwyciężają!" + bcolors.ENDC)
                                 running = False
                         break
+
+        for player in ally:
+                if player.character.buff == "Ziemia":
+                    player.heal(20)
+                    player.mana_restore(20)
+
+                elif player.character.buff == "Woda":
+                    player.heal(22)
+                    player.mana_restore(35)
+
+                elif player.character.buff == "Ogień":
+                    player.heal(20)
+                    player.mana_restore(17)
+
+                elif player.character.buff == "Wiatr":
+                    player.heal(20)
+                    player.mana_restore(45)
+
+        for enemy in foe:
+            enemy.heal(20)
+            enemy.mana_restore(15)

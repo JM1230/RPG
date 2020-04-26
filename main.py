@@ -15,15 +15,16 @@ ignite = Spell("Podpalenie", 20, 110, "black")
 meteor = Spell("Meteor", 30, 200, "black")
 smite = Spell("Porażenie", 25, 190, "black")
 thunder = Spell("Błyskawica", 35, 300, "black")
-fireball = Spell("Kula Ognia", 40, 385, "black")
+element_ball = Spell("Kula Żywiołów", 40, 385, "black")
 tempest = Spell("Nawałnica Stali", 70, 500, "black")
 penetration = Spell("Penetracja", 80, 650, "black")
-assassination = Spell("Natychmiastowe zabójstwo", 230, 9999999999999999999999999999, "black")  # 20% szans na powodzenie
-shout = Spell("Ogłuszający Krzyk", 0, 0, "black")                                            # Obrażenia umiejętności są zależne od obecnego HP bohatera
+assassination = Spell("Natychmiastowe zabójstwo", 150, 9999999999999999999999999999, "black")  # 20% szans na powodzenie
+shout = Spell("'Tanio skóry nie sprzedam'", 200, 0, "black")                                            # Obrażenia umiejętności są zależne od obecnego HP bohatera
 carnage = Spell("Rzeź", 35, 250, "black")
 stone_fists = Spell("Kamienne Pięści", 30, 200, "black")
 cure = Spell("Uleczenie", 50, 300, "white")
 heal = Spell("Uzdrowienie", 200, 9999999999999999999999999999999, "white")
+block = Spell("Garda", 10, 0, "block")
 
 # Przedmioty
 health_potion = Item("Mikstura zdrowia", "potion", "Przywraca 150 HP", 150)
@@ -35,29 +36,50 @@ player_items = [{"item": health_potion, "quantity": 2},
                 {"item": grenade, "quantity": 1}]
 
 # Klasy postaci
-warrior = Person("Wojownik", 4500, 70, 110, 10, [power_hit, smash], player_items)
-sorcerer = Person("Mag", 3000, 350, 20, 150, [ignite, meteor, smite, thunder, fireball], player_items)
-assassin = Person("Skrytobójca", 2500, 230, 160, 75, [smite, tempest, penetration, assassination], player_items)
-paladin = Person("Paladyn", 4000, 250, 80, 30, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank = Person("Obrońca", 5550, 50, 50, 0, [shout, cure], player_items)
-rogue = Person("Łotrzyk", 3750, 150, 175, 20, [power_hit, carnage, stone_fists], player_items)
+warrior_soil = Person("Wojownik", "Ziemia", 4350, 300, 35, 45, [], [power_hit, smash], player_items)
+sorcerer_soil = Person("Mag", "Ziemia", 3150, 600, 15, 110, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_soil = Person("Skrytobójca", "Ziemia", 3000, 350, 50, 55, [], [smite, tempest, penetration, assassination], player_items)
+paladin_soil = Person("Paladyn", "Ziemia", 3450, 400, 25, 45, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_soil = Person("Osiłek", "Ziemia", 4950, 300, 30, 0, [], [shout, cure], player_items)
+fighter_soil = Person("Pięściarz", "Ziemia", 4100, 150, 60, 10, [], [power_hit, carnage, stone_fists], player_items)
+
+warrior_water = Person("Wojownik", "Woda", 4000, 400, 35, 45, [], [power_hit, smash], player_items)
+sorcerer_water = Person("Mag", "Woda", 2800, 700, 15, 110, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_water = Person("Skrytobójca", "Woda", 2650, 450, 50, 55, [], [smite, tempest, penetration, assassination], player_items)
+paladin_water = Person("Paladyn", "Woda", 3100, 500, 25, 45, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_water = Person("Osiłek", "Woda", 4600, 400, 30, 0, [], [shout, cure], player_items)
+fighter_water = Person("Pięściarz", "Woda", 3750, 250, 60, 10, [], [power_hit, carnage, stone_fists], player_items)
+
+warrior_fire = Person("Wojownik", "Ogień", 4000, 300, 55, 45, [], [power_hit, smash], player_items)
+sorcerer_fire = Person("Mag", "Ogień", 2800, 600, 35, 110, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_fire = Person("Skrytobójca", "Ogień", 2650, 350, 70, 55, [], [smite, tempest, penetration, assassination], player_items)
+paladin_fire = Person("Paladyn", "Ogień", 3100, 400, 45, 45, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_fire = Person("Osiłek", "Ogień", 4600, 300, 50, 0, [], [shout, cure], player_items)
+fighter_fire = Person("Pięściarz", "Ogień", 3750, 150, 80, 10, [], [power_hit, carnage, stone_fists], player_items)
+
+warrior_wind = Person("Wojownik", "Wiatr", 4000, 300, 35, 45, [],[power_hit, smash], player_items)
+sorcerer_wind = Person("Mag", "Wiatr", 2800, 600, 15, 110, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_wind = Person("Skrytobójca", "Wiatr", 2650, 350, 50, 55, [], [smite, tempest, penetration, assassination], player_items)
+paladin_wind = Person("Paladyn", "Wiatr", 3100, 400, 25, 45, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_wind = Person("Osiłek", "Wiatr", 4600, 300, 30, 0, [], [shout, cure], player_items)
+fighter_wind = Person("Pięściarz", "Wiatr", 3750, 150, 60, 10, [], [power_hit, carnage, stone_fists], player_items)
 
 # Przeciwnicy (tymczasowo)
-imp = Person("Imp", 2000, 100, 55, 0, [ignite], [])
-demon = Person("Demon", 8000, 300, 50, 0, [fireball, cure], [])
-orc = Person("Ork", 7000, 150, 100, 0, [power_hit], [])
+imp = Person("Imp", [], 2000, 100, 55, 0, [], [smite], [])
+demon = Person("Demon", [], 8000, 300, 50, 0, [], [ignite, meteor, cure], [])
+orc = Person("Ork", [], 7000, 150, 100, 0, [], [power_hit], [])
 
 enemies = [imp, demon, orc]
 
 # Menu
 while 1:
     print(bcolors.BOLD + "Klasy postaci: " + bcolors.ENDC)
-    print("[1]", warrior.cl)
-    print("[2]", sorcerer.cl)
-    print("[3]", assassin.cl)
-    print("[4]", paladin.cl)
-    print("[5]", tank.cl)
-    print("[6]", rogue.cl)
+    print("[1] Wojownik")
+    print("[2] Mag")
+    print("[3] Skrytobójca")
+    print("[4] Paladyn")
+    print("[5] Osiłek")
+    print("[6] Pięściarz")
     print("\n[Dowolny Przycisk] Start")
 
     c = input()
@@ -83,50 +105,242 @@ i = 1
 while i <= int(players_quantity):
     name = input(bcolors.BOLD + "Gracz " + str(i) + ": " + bcolors.ENDC)
     print(bcolors.BOLD + "Wybierz klasę swojej postaci:" + bcolors.ENDC)
-    print("[1]", warrior.cl)
-    print("[2]", sorcerer.cl)
-    print("[3]", assassin.cl)
-    print("[4]", paladin.cl)
-    print("[5]", tank.cl)
-    print("[6]", rogue.cl)
+    print("[1] Wojownik")
+    print("[2] Mag")
+    print("[3] Skrytobójca")
+    print("[4] Paladyn")
+    print("[5] Osiłek")
+    print("[6] Pięściarz")
 
     while 1:
         character = input()
 
         if character == '1':
-            player = Player(name, warrior)
-            players.append(player)
-            i += 1
+            print(bcolors.BOLD + "Wybierz żywioł:" + bcolors.ENDC)
+            print("[1] Ziemia")
+            print("[2] Woda")
+            print("[3] Ogień")
+            print("[4] Wiatr")
+
+            while 1:
+                element = input()
+
+                if element == '1':
+                    player = Player(name, warrior_soil)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '2':
+                    player = Player(name, warrior_water)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '3':
+                    player = Player(name, warrior_fire)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '4':
+                    player = Player(name, warrior_wind)
+                    players.append(player)
+                    i += 1
+                    break
+
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nie ma takiego żywiołu!\n" + bcolors.ENDC + bcolors.BOLD + "Wybierz żywioł ponownie!" + bcolors.ENDC)
             break
 
         elif character == '2':
-            player = Player(name, sorcerer)
-            players.append(player)
-            i += 1
+            print(bcolors.BOLD + "Wybierz żywioł:" + bcolors.ENDC)
+            print("[1] Ziemia")
+            print("[2] Woda")
+            print("[3] Ogień")
+            print("[4] Wiatr")
+
+            while 1:
+                element = input()
+
+                if element == '1':
+                    player = Player(name, sorcerer_soil)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '2':
+                    player = Player(name, sorcerer_water)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '3':
+                    player = Player(name, sorcerer_fire)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '4':
+                    player = Player(name, sorcerer_wind)
+                    players.append(player)
+                    i += 1
+                    break
+
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nie ma takiego żywiołu!\n" + bcolors.ENDC + bcolors.BOLD + "Wybierz żywioł ponownie!" + bcolors.ENDC)
             break
 
         elif character == '3':
-            player = Player(name, assassin)
-            players.append(player)
-            i += 1
+            print(bcolors.BOLD + "Wybierz żywioł:" + bcolors.ENDC)
+            print("[1] Ziemia")
+            print("[2] Woda")
+            print("[3] Ogień")
+            print("[4] Wiatr")
+
+            while 1:
+                element = input()
+
+                if element == '1':
+                    player = Player(name, assassin_soil)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '2':
+                    player = Player(name, assassin_water)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '3':
+                    player = Player(name, assassin_fire)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '4':
+                    player = Player(name, assassin_wind)
+                    players.append(player)
+                    i += 1
+                    break
+
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nie ma takiego żywiołu!\n" + bcolors.ENDC + bcolors.BOLD + "Wybierz żywioł ponownie!" + bcolors.ENDC)
             break
 
         elif character == '4':
-            player = Player(name, paladin)
-            players.append(player)
-            i += 1
+            print(bcolors.BOLD + "Wybierz żywioł:" + bcolors.ENDC)
+            print("[1] Ziemia")
+            print("[2] Woda")
+            print("[3] Ogień")
+            print("[4] Wiatr")
+
+            while 1:
+                element = input()
+
+                if element == '1':
+                    player = Player(name, paladin_soil)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '2':
+                    player = Player(name, paladin_water)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '3':
+                    player = Player(name, paladin_fire)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '4':
+                    player = Player(name, paladin_wind)
+                    players.append(player)
+                    i += 1
+                    break
+
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nie ma takiego żywiołu!\n" + bcolors.ENDC + bcolors.BOLD + "Wybierz żywioł ponownie!" + bcolors.ENDC)
             break
 
         elif character == '5':
-            player = Player(name, tank)
-            players.append(player)
-            i += 1
+            print(bcolors.BOLD + "Wybierz żywioł:" + bcolors.ENDC)
+            print("[1] Ziemia")
+            print("[2] Woda")
+            print("[3] Ogień")
+            print("[4] Wiatr")
+
+            while 1:
+                element = input()
+
+                if element == '1':
+                    player = Player(name, tank_soil)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '2':
+                    player = Player(name, tank_water)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '3':
+                    player = Player(name, tank_fire)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '4':
+                    player = Player(name, tank_wind)
+                    players.append(player)
+                    i += 1
+                    break
+
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nie ma takiego żywiołu!\n" + bcolors.ENDC + bcolors.BOLD + "Wybierz żywioł ponownie!" + bcolors.ENDC)
             break
 
         elif character == '6':
-            player = Player(name, rogue)
-            players.append(player)
-            i += 1
+            print(bcolors.BOLD + "Wybierz żywioł:" + bcolors.ENDC)
+            print("[1] Ziemia")
+            print("[2] Woda")
+            print("[3] Ogień")
+            print("[4] Wiatr")
+
+            while 1:
+                element = input()
+
+                if element == '1':
+                    player = Player(name, fighter_soil)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '2':
+                    player = Player(name, fighter_water)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '3':
+                    player = Player(name, fighter_fire)
+                    players.append(player)
+                    i += 1
+                    break
+
+                elif element == '4':
+                    player = Player(name, fighter_wind)
+                    players.append(player)
+                    i += 1
+                    break
+
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nie ma takiego żywiołu!\n" + bcolors.ENDC + bcolors.BOLD + "Wybierz żywioł ponownie!" + bcolors.ENDC)
             break
 
         else:
@@ -135,7 +349,7 @@ while i <= int(players_quantity):
 print(bcolors.BOLD + "Gracz", "\t\t", "Klasa" + bcolors.ENDC)
 
 for i in range(len(players)):
-    print(players[i].nickname, "\t\t", players[i].character.cl)
+    print(players[i].nickname, "\t\t", players[i].character.cl, "-", players[i].character.buff)
 
 # HISTORIA (tymczasowo brak, ale w tym miejscu musi zostać pierwszy raz wywołana)
 

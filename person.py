@@ -1,5 +1,5 @@
 class Person:
-    def __init__(self, cl, hp, mp, atk, power, magic, items):
+    def __init__(self, cl, buff, hp, mp, atk, power, dodge, magic, items):
         self.maxhp = hp
         self.hp = hp
         self.maxmp = mp
@@ -8,6 +8,8 @@ class Person:
         self.atkhigh = atk + 10
         self.magic = magic
         self.power = power
+        self.dodge = dodge
         self.items = items
         self.action = ["Atak", "Umiejętności", "Przedmioty"]
         self.cl = cl
+        self.buff = buff
