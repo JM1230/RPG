@@ -37,7 +37,7 @@ player_items = [{"item": health_potion, "quantity": 2},
 # Klasy postaci
 warrior = Person("Wojownik", 4500, 70, 110, 10, [power_hit, smash], player_items)
 sorcerer = Person("Mag", 3000, 350, 20, 150, [ignite, meteor, smite, thunder, fireball], player_items)
-assassin = Person("Skrytobójca", 3100, 230, 155, 45, [smite, tempest, penetration, assassination], player_items)
+assassin = Person("Skrytobójca", 2500, 230, 160, 75, [smite, tempest, penetration, assassination], player_items)
 paladin = Person("Paladyn", 4000, 250, 80, 30, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
 tank = Person("Obrońca", 5550, 50, 50, 0, [shout, cure], player_items)
 rogue = Person("Łotrzyk", 3750, 150, 175, 20, [power_hit, carnage, stone_fists], player_items)
