@@ -42,9 +42,9 @@ def description(c):
 
         if c == '3':
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "SKRYTOBÓJCA\n")
-            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "3100" + bcolors.ENDC)
-            print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "155" + bcolors.ENDC)
-            print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "45" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "2500" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "160" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "75" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
             print("Skrytobójca jest postacią wysokiego ryzyka. Zadaje ogromne obrażenia, ale nie jest przystosowany do długich walk.")
             print(bcolors.BOLD + "\n\nUMIEJĘTNOŚCI:" + bcolors.ENDC)
