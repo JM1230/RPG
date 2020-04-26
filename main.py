@@ -52,12 +52,12 @@ enemies = [imp, demon, orc]
 # Menu
 while 1:
     print(bcolors.BOLD + "Klasy postaci: " + bcolors.ENDC)
-    print("[1] Wojownik")
-    print("[2] Mag")
-    print("[3] Skrytobójca")
-    print("[4] Paladyn")
-    print("[5] Obrońca")
-    print("[6] Łotrzyk")
+    print("[1]", warrior.cl)
+    print("[2]", sorcerer.cl)
+    print("[3]", assassin.cl)
+    print("[4]", paladin.cl)
+    print("[5]", tank.cl)
+    print("[6]", rogue.cl)
     print("\n[Dowolny Przycisk] Start")
 
     c = input()
@@ -83,12 +83,12 @@ i = 1
 while i <= int(players_quantity):
     name = input(bcolors.BOLD + "Gracz " + str(i) + ": " + bcolors.ENDC)
     print(bcolors.BOLD + "Wybierz klasę swojej postaci:" + bcolors.ENDC)
-    print("[1] Wojownik")
-    print("[2] Mag")
-    print("[3] Skrytobójca")
-    print("[4] Paladyn")
-    print("[5] Obrońca")
-    print("[6] Łotrzyk")
+    print("[1]", warrior.cl)
+    print("[2]", sorcerer.cl)
+    print("[3]", assassin.cl)
+    print("[4]", paladin.cl)
+    print("[5]", tank.cl)
+    print("[6]", rogue.cl)
 
     while 1:
         character = input()
