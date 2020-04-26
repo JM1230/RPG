@@ -53,7 +53,7 @@ class Player:
 
     def choose_action(self):
         i = 1
-        print(bcolors.BLUE + bcolors.BOLD + "\tAKCJE:" + bcolors.ENDC)
+        print(bcolors.YELLOW + bcolors.BOLD + "\tAKCJE:" + bcolors.ENDC)
         for item in self.action:
             print("        " + str(i) + ":", item)
             i += 1
@@ -67,7 +67,7 @@ class Player:
 
     def choose_item(self):
         i = 1
-        print("\n" + bcolors.GREEN + bcolors.BOLD + "\tPRZEDMIOTY:" + bcolors.ENDC)
+        print("\n" + bcolors.PURPLE + bcolors.BOLD + "\tPRZEDMIOTY:" + bcolors.ENDC)
         for item in self.items:
             print("        " + str(i) + ":", item["item"].name + ":", item["item"].description, "(x" + str(item["quantity"]) + ")")
             i += 1

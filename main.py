@@ -69,16 +69,19 @@ while 1:
         break
 
 # Inicjacja graczy
-players_quantity = int(input(bcolors.BOLD + "Podaj ilość graczy(1-5): " + bcolors.ENDC))
+while 1:
+    players_quantity = input(bcolors.BOLD + "Podaj ilość graczy(1-5): " + bcolors.ENDC)
+    if players_quantity == '1' or players_quantity == '2' or players_quantity == '3' or players_quantity == '4' or players_quantity == '5':
+        break
 
-while players_quantity < 1 or players_quantity > 5:
-    players_quantity = int(input(bcolors.BOLD + bcolors.RED + "Nieprawidłowa liczba!\n" + bcolors.ENDC + bcolors.BOLD + "Podaj ilość graczy ponownie(1-5): " + bcolors.ENDC))
+    else:
+        print(bcolors.BOLD + bcolors.RED + "Nieprawidłowa liczba!\n" + bcolors.ENDC)
 
 players = []
 i = 1
 
-while i <= players_quantity:
-    name = str(input(bcolors.BOLD + "Gracz " + str(i) + ": " + bcolors.ENDC))
+while i <= int(players_quantity):
+    name = input(bcolors.BOLD + "Gracz " + str(i) + ": " + bcolors.ENDC)
     print(bcolors.BOLD + "Wybierz klasę swojej postaci:" + bcolors.ENDC)
     print("[1] Wojownik")
     print("[2] Mag")
@@ -148,7 +151,7 @@ while i <= q1:
     foe.append(foe_list[i])
     i += 1
 
-q2 = random.randrange(0, players_quantity)      # tymczasowo do testów - gracze nie będą losowani
+q2 = random.randrange(0, int(players_quantity))      # tymczasowo do testów - gracze nie będą losowani
 i = 0
 ally = []
 
