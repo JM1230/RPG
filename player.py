@@ -54,7 +54,7 @@ class Player:
         self.mp -= cost
 
     def dodge_chance(self):
-        chance = random.randrange(0, 100)
+        chance = int(random.randrange(0, 100))
         self.dodge = chance
 
     def get_dodge_chance(self):

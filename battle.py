@@ -296,10 +296,10 @@ def battle(foe, ally):
                         ally[target].dodge_chance()
                         dodge_endline += 67
 
-                    if ally[target].chcarcter.buff == "Wiatr":
+                    if ally[target].buff == "Wiatr":
                         dodge_endline += 15
 
-                    if ally[target].get_dodge_chance >= 0 and ally[target].get_dodge_chance < dodge_endline:
+                    if ally[target].get_dodge_chance() >= 0 and ally[target].get_dodge_chance() < dodge_endline:
                         enemy_dmg = 0
                         dodge_string = "(Unik)"
 
@@ -340,10 +340,10 @@ def battle(foe, ally):
                             ally[target].dodge_chance()
                             dodge_endline += 67
 
-                        if ally[target].chcarcter.buff == "Wiatr":
+                        if ally[target].buff == "Wiatr":
                             dodge_endline += 15
 
-                        if ally[target].get_dodge_chance >= 0 and ally[target].get_dodge_chance < dodge_endline:
+                        if ally[target].get_dodge_chance() >= 0 and ally[target].get_dodge_chance() < dodge_endline:
                             magic_dmg = 0
                             dodge_string = "(Unik)"
 
