@@ -13,6 +13,7 @@ class Player:
         self.atkhigh = character.atkhigh
         self.power = character.power
         self.dodge = character.dodge
+        self.temp_dodge = character.temp_dodge
         self.magic = character.magic
         self.items = character.items
         self.action = character.action
@@ -54,7 +55,7 @@ class Player:
         self.mp -= cost
 
     def dodge_chance(self):
-        chance = int(random.randrange(0, 100))
+        chance = random.randrange(0, 100)
         self.dodge = chance
 
     def get_dodge_chance(self):
@@ -87,6 +88,17 @@ class Player:
         for enemy in enemies:
             if enemy.get_hp() != 0:
                 print("        " + str(i) + ".", enemy.character.cl)
+                i += 1
+
+        choice = int(input("\tWybierz cel: ")) - 1
+        return choice
+
+    def choose_ally(self, players):
+        i = 1
+        print("\n" + bcolors.GREEN + bcolors.BOLD + "\tSOJUSZNIK:" + bcolors.ENDC)
+        for player in players:
+            if player.get_hp() != 0:
+                print("        " + str(i) + ".", player.nickname)
                 i += 1
 
         choice = int(input("\tWybierz cel: ")) - 1

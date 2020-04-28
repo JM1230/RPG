@@ -14,6 +14,8 @@ def description(c):
             print(bcolors.RED + "\tObrażenia:   155" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  20" + bcolors.ENDC)
             print(bcolors.BOLD + "\nMiazga" + bcolors.ENDC)
             print(bcolors.RED + "\tObrażenia:   200" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  30" + bcolors.ENDC)
+            print(bcolors.BOLD + "\nGarda" + bcolors.ENDC)
+            print(bcolors.YELLOW + "\tUnik:       +80" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  10" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break
@@ -115,6 +117,27 @@ def description(c):
             print(bcolors.RED + "\tObrażenia:   250" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  35" + bcolors.ENDC)
             print(bcolors.BOLD + "\nKamienne Pięści" + bcolors.ENDC)
             print(bcolors.RED + "\tObrażenia:   200" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  30" + bcolors.ENDC)
+            print(bcolors.BOLD + "\nGarda" + bcolors.ENDC)
+            print(bcolors.YELLOW + "\tUnik:       +80" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  10" + bcolors.ENDC)
+
+            x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
+            break
+
+        if c == '7':
+            print(bcolors.BOLD + "ŻYWIŁOY:\n" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.GREEN + "ZIEMIA:" + bcolors.ENDC)
+            print(bcolors.GREEN + "\tZdrowie: +350 HP" + bcolors.ENDC)
+            print(bcolors.BLUE + "\tRegeneracja many: -20%" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.BLUE + "\nWODA:" + bcolors.ENDC)
+            print(bcolors.GREEN + "\t+10% bardziej efektywne leczenie" + bcolors.ENDC)
+            print(bcolors.BLUE + "\tMana: +100 MP" + bcolors.ENDC)
+            print(bcolors.BLUE + "\tRegeneracja many: +10 MP")
+            print(bcolors.BOLD + bcolors.RED + "\nOGIEŃ:" + bcolors.ENDC)
+            print(bcolors.RED + "\tAtak: +20 DMG" + bcolors.ENDC)
+            print(bcolors.PURPLE + "\tMoc umiejętności: +10%" + bcolors.ENDC)
+            print(bcolors.BOLD + "\nWIATR:" + bcolors.ENDC)
+            print(bcolors.BLUE + "\tRegeneracja many: +20 MP" + bcolors.ENDC)
+            print(bcolors.YELLOW + "\tSzansa na unik: +15%")
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break

@@ -9,6 +9,7 @@ class Person:
         self.magic = magic
         self.power = power
         self.dodge = dodge
+        self.temp_dodge = dodge
         self.items = items
         self.action = ["Atak", "Umiejętności", "Przedmioty"]
         self.cl = cl

@@ -9,8 +9,8 @@ from bcolors import bcolors
 import random
 
 # Umiejętności
-power_hit = Spell("Potężne Uderzenie", 20, 155, "black")
-smash = Spell("Miazga", 30, 200, "black")
+power_hit = Spell("Potężne Uderzenie", 20, 180, "black")
+smash = Spell("Miazga", 30, 220, "black")
 ignite = Spell("Podpalenie", 20, 110, "black")
 meteor = Spell("Meteor", 30, 200, "black")
 smite = Spell("Porażenie", 25, 190, "black")
@@ -18,13 +18,15 @@ thunder = Spell("Błyskawica", 35, 300, "black")
 element_ball = Spell("Kula Żywiołów", 40, 385, "black")
 tempest = Spell("Nawałnica Stali", 70, 500, "black")
 penetration = Spell("Penetracja", 80, 650, "black")
-assassination = Spell("Natychmiastowe zabójstwo", 150, 9999999999999999999999999999, "black")  # 20% szans na powodzenie
-shout = Spell("'Tanio skóry nie sprzedam'", 200, 0, "black")                                            # Obrażenia umiejętności są zależne od obecnego HP bohatera
+assassination = Spell("Natychmiastowe zabójstwo", 150, 9999999999999999999999999999, "black")
+shout = Spell("'Tanio skóry nie sprzedam'", 200, 0, "black")
 carnage = Spell("Rzeź", 35, 250, "black")
 stone_fists = Spell("Kamienne Pięści", 30, 200, "black")
 cure = Spell("Uleczenie", 50, 300, "white")
 heal = Spell("Uzdrowienie", 200, 9999999999999999999999999999999, "white")
 block = Spell("Garda", 10, 0, "block")
+HP_steal = Spell("Kradzież życia", 50, 300, "HP steal")
+MP_steal = Spell("Kradzież many", 20, 50, "MP steal")
 
 # Przedmioty
 health_potion = Item("Mikstura zdrowia", "potion", "Przywraca 150 HP", 150)
@@ -41,51 +43,70 @@ sorcerer_soil = Person("Mag", "Ziemia", 3150, 600, 15, 110, 0, [ignite, meteor, 
 assassin_soil = Person("Skrytobójca", "Ziemia", 3000, 350, 50, 55, 0, [smite, tempest, penetration, assassination], player_items)
 paladin_soil = Person("Paladyn", "Ziemia", 3450, 400, 25, 45, 0, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
 tank_soil = Person("Osiłek", "Ziemia", 4950, 300, 30, 0, 0, [shout, cure], player_items)
-fighter_soil = Person("Pięściarz", "Ziemia", 4100, 150, 60, 10, 0, [power_hit, carnage, stone_fists], player_items)
+fighter_soil = Person("Pięściarz", "Ziemia", 4100, 150, 60, 10, 0, [power_hit, carnage, stone_fists, block], player_items)
+rogue_soil = Person("Łotrzyk", "Ziemia", 3350, 300, 45, 20, 0, [HP_steal], player_items)
 
 warrior_water = Person("Wojownik", "Woda", 4000, 400, 35, 45, 0, [power_hit, smash, block], player_items)
 sorcerer_water = Person("Mag", "Woda", 2800, 700, 15, 110, 0, [ignite, meteor, smite, thunder, element_ball], player_items)
 assassin_water = Person("Skrytobójca", "Woda", 2650, 450, 50, 55, 0, [smite, tempest, penetration, assassination], player_items)
 paladin_water = Person("Paladyn", "Woda", 3100, 500, 25, 45, 0, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
 tank_water = Person("Osiłek", "Woda", 4600, 400, 30, 0, 0, [shout, cure], player_items)
-fighter_water = Person("Pięściarz", "Woda", 3750, 250, 60, 10, 0, [power_hit, carnage, stone_fists], player_items)
+fighter_water = Person("Pięściarz", "Woda", 3750, 250, 60, 10, 0, [power_hit, carnage, stone_fists, block], player_items)
+rogue_water = Person("Łotrzyk", "Woda", 3000, 400, 45, 20, 0, [HP_steal], player_items)
 
-warrior_fire = Person("Wojownik", "Ogień", 4000, 300, 55, 45, 0, [power_hit, smash, block], player_items)
-sorcerer_fire = Person("Mag", "Ogień", 2800, 600, 35, 110, 0, [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_fire = Person("Skrytobójca", "Ogień", 2650, 350, 70, 55, 0, [smite, tempest, penetration, assassination], player_items)
-paladin_fire = Person("Paladyn", "Ogień", 3100, 400, 45, 45, 0, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+warrior_fire = Person("Wojownik", "Ogień", 4000, 300, 55, 50, 0, [power_hit, smash, block], player_items)
+sorcerer_fire = Person("Mag", "Ogień", 2800, 600, 35, 121, 0, [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_fire = Person("Skrytobójca", "Ogień", 2650, 350, 70, 60, 0, [smite, tempest, penetration, assassination], player_items)
+paladin_fire = Person("Paladyn", "Ogień", 3100, 400, 45, 50, 0, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
 tank_fire = Person("Osiłek", "Ogień", 4600, 300, 50, 0, 0, [shout, cure], player_items)
-fighter_fire = Person("Pięściarz", "Ogień", 3750, 150, 80, 10, [], [power_hit, carnage, stone_fists], player_items)
+fighter_fire = Person("Pięściarz", "Ogień", 3750, 150, 80, 11, 0, [power_hit, carnage, stone_fists, block], player_items)
+rogue_fire = Person("Łotrzyk", "Ogień", 3000, 300, 65, 22, 0, [HP_steal], player_items)
 
 warrior_wind = Person("Wojownik", "Wiatr", 4000, 300, 35, 45, 0, [power_hit, smash, block], player_items)
 sorcerer_wind = Person("Mag", "Wiatr", 2800, 600, 15, 110, 0, [ignite, meteor, smite, thunder, element_ball], player_items)
 assassin_wind = Person("Skrytobójca", "Wiatr", 2650, 350, 50, 55, 0, [smite, tempest, penetration, assassination], player_items)
 paladin_wind = Person("Paladyn", "Wiatr", 3100, 400, 25, 45, 0, [power_hit, ignite, meteor, thunder, heal, cure], player_items)
 tank_wind = Person("Osiłek", "Wiatr", 4600, 300, 30, 0, 0, [shout, cure], player_items)
-fighter_wind = Person("Pięściarz", "Wiatr", 3750, 150, 60, 10, 0, [power_hit, carnage, stone_fists], player_items)
+fighter_wind = Person("Pięściarz", "Wiatr", 3750, 150, 60, 10, 0, [power_hit, carnage, stone_fists, block], player_items)
+rogue_wind = Person("Łotrzyk", "Wiatr", 3000, 300, 50, 20, 0, [HP_steal], player_items)
 
 # Przeciwnicy (tymczasowo)
-imp = Person("Imp", [], 2000, 100, 55, 0, 0, [smite], [])
-demon = Person("Demon", [], 8000, 300, 50, 0, 0, [ignite, meteor, cure], [])
-orc = Person("Ork", [], 7000, 150, 100, 0, 0, [power_hit], [])
+imp = Person("Imp", [], 2000, 200, 55, 0, 0, [smite], [])
+demon = Person("Demon", [], 8000, 400, 50, 0, 0, [ignite, meteor, cure], [])
+orc = Person("Ork", [], 7000, 150, 200, 0, 0, [power_hit], [])
 
 enemies = [imp, demon, orc]
 
 # Menu
 while 1:
-    print(bcolors.BOLD + "Klasy postaci: " + bcolors.ENDC)
-    print("[1] Wojownik")
-    print("[2] Mag")
-    print("[3] Skrytobójca")
-    print("[4] Paladyn")
-    print("[5] Osiłek")
-    print("[6] Pięściarz")
-    print("\n[Dowolny Przycisk] Start")
+    print("[Dowolny Przycisk] Start")
+    print("[1] Klasy")
+    print("[2] Żywioły")
+    v = input()
 
-    c = input()
+    if v == '1':
+        print(bcolors.BOLD + "Klasy postaci: " + bcolors.ENDC)
+        print("[1] Wojownik")
+        print("[2] Mag")
+        print("[3] Skrytobójca")
+        print("[4] Paladyn")
+        print("[5] Osiłek")
+        print("[6] Pięściarz")
+        print("[0] Powrót")
+        c = input()
 
-    if c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6':
-        description(c)
+        if c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6':
+            description(c)
+
+        elif c == '0':
+            continue
+
+        else:
+            print(bcolors.BOLD + bcolors.RED + "Nie ma takiej klasy!\n" + bcolors.ENDC)
+            continue
+
+    elif v == '2':
+        description(str(7))
 
     else:
         break

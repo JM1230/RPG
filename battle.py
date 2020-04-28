@@ -16,6 +16,7 @@ def battle(foe, ally):
             print(bcolors.BOLD + player.nickname + ":" + bcolors.ENDC)
             player.get_stats()
             player.dodge_chance()
+            player.temp_dodge = False
 
         print("\n")
 
@@ -79,12 +80,13 @@ def battle(foe, ally):
                     player.reduce_mp(spell.cost)
 
                     if spell.type == "white":
-                        player.heal(magic_dmg)
+                        friend = player.choose_ally(ally)
+                        ally[friend].heal(magic_dmg)
 
                         if magic_dmg > player.maxhp:
                             magic_dmg = int(player.maxhp - magic_dmg)
 
-                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(magic_dmg), " HP" + bcolors.ENDC)
+                        print(bcolors.BOLD + player.nickname + ": " + ally[friend].nickname + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(magic_dmg), " HP" + bcolors.ENDC)
                         break
 
                     elif spell.type == "black":
@@ -221,8 +223,12 @@ def battle(foe, ally):
                         break
 
                     elif spell.type == "block":
-                        player.dodge = 101
+                        player.temp_dodge = True
                         break
+
+                    elif spell.type == "HP steal":
+                        enemy = player.choose_target(foe)
+                        friend = player.choose_ally(ally)
 
                 elif index == 2:
                     player.choose_item()
@@ -264,16 +270,8 @@ def battle(foe, ally):
 
                     elif item.type == "attack":
                         enemy = player.choose_target(foe)
-                        if foe[enemy].get_dodge_chance() >= 0 and foe[enemy].get_dodge_chance() < 13:
-                            dmg = 0
-                            dodge_string = "(Unik)"
-
-                        else:
-                            dmg = item.prop
-                            dodge_string = ""
-
-                        foe[enemy].take_damage(dmg)
-                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.YELLOW + item.name + ": " + bcolors.ENDC + str(dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC, str(dodge_string))
+                        foe[enemy].take_damage(item.prop)
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.YELLOW + item.name + ": " + bcolors.ENDC + str(item.prop) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC)
 
                         if foe[enemy].get_hp() == 0:
                             print(bcolors.GREEN + foe[enemy].character.cl, "został pokonany!" + bcolors.ENDC)
@@ -292,7 +290,7 @@ def battle(foe, ally):
                     target = random.randrange(0, alive)
                     enemy_dmg = enemy.generate_damage()
                     dodge_endline = 13
-                    if ally[target].get_dodge_chance() == 101:
+                    if ally[target].temp_dodge == True:
                         ally[target].dodge_chance()
                         dodge_endline += 67
 
@@ -336,7 +334,7 @@ def battle(foe, ally):
                     elif spell.type == "black":
                         target = random.randrange(0, alive)
                         dodge_endline = 13
-                        if ally[target].get_dodge_chance() == 101:
+                        if ally[target].temp_dodge == True:
                             ally[target].dodge_chance()
                             dodge_endline += 67
 
@@ -382,5 +380,5 @@ def battle(foe, ally):
                     player.mana_restore(45)
 
         for enemy in foe:
-            enemy.heal(20)
-            enemy.mana_restore(15)
+            enemy.heal(25)
+            enemy.mana_restore(20)
