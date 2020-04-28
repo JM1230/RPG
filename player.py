@@ -14,6 +14,7 @@ class Player:
         self.power = character.power
         self.dodge = character.dodge
         self.temp_dodge = character.temp_dodge
+        self.stunned = character.stunned
         self.magic = character.magic
         self.items = character.items
         self.action = character.action

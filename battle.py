@@ -229,6 +229,51 @@ def battle(foe, ally):
                     elif spell.type == "HP steal":
                         enemy = player.choose_target(foe)
                         friend = player.choose_ally(ally)
+                        magic_dmg = 250
+                        foe[enemy].take_damage(magic_dmg)
+                        heal = int(magic_dmg/1.5)
+                        ally[friend].heal(heal)
+
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC)
+                        print(bcolors.BOLD + player.nickname + ": " + ally[friend].nickname + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(heal) + " HP" + bcolors.ENDC)
+
+                        if foe[enemy].get_hp() == 0:
+                            print(bcolors.GREEN + foe[enemy].character.cl, "został pokonany!" + bcolors.ENDC)
+                            del foe[enemy]
+                            defeated_enemies += 1
+
+                        if defeated_enemies == int(len(foe)) + 1:
+                            print(bcolors.GREEN + "Sukces!" + bcolors.ENDC)
+                            running = False
+                        break
+
+                    elif spell.type == "MP steal":
+                        enemy = player.choose_target(foe)
+                        friend = player.choose_ally(ally)
+                        magic_dmg = 50
+
+                        if enemy.get_mp() < magic_dmg:
+                            magic_dmg = enemy.get_mp()
+
+                        foe[enemy].reduce_mp(magic_dmg)
+                        mana = int(magic_dmg/1.75)
+                        ally[friend].mana_restore(mana)
+
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " MP <= " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC)
+                        print(bcolors.BOLD + player.nickname + ": " + ally[friend].nickname + bcolors.ENDC + bcolors.BLUE + " uzyskał " + str(mana) + " MP" + bcolors.ENDC)
+                        break
+
+                    elif spell.type == "stun":
+                        enemy = player.choose_target(foe)
+                        if foe[enemy].get_dodge_chance() >= 0 and foe[enemy].get_dodge_chance() < 13:
+                            dodge_string = "(Unik)"
+
+                        else:
+                            dodge_string = ""
+                            foe[enemy].stunned = True
+
+                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + bcolors.ENDC + " => " + bcolors.BOLD + bcolors.RED + foe[enemy].character.cl + bcolors.ENDC, str(dodge_string))
+                        break
 
                 elif index == 2:
                     player.choose_item()
@@ -284,55 +329,16 @@ def battle(foe, ally):
                         break
 
         for enemy in foe:
-            while 1:
-                enemy_choice = random.randrange(0, 2)
-                if enemy_choice == 0:
-                    target = random.randrange(0, alive)
-                    enemy_dmg = enemy.generate_damage()
-                    dodge_endline = 13
-                    if ally[target].temp_dodge == True:
-                        ally[target].dodge_chance()
-                        dodge_endline += 67
+            if enemy.stunned == True:
+                enemy.stunned = False
+                print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC, "- brak akcji")
 
-                    if ally[target].buff == "Wiatr":
-                        dodge_endline += 15
-
-                    if ally[target].get_dodge_chance() >= 0 and ally[target].get_dodge_chance() < dodge_endline:
-                        enemy_dmg = 0
-                        dodge_string = "(Unik)"
-
-                    else:
-                        dodge_string = ""
-
-                    ally[target].take_damage(enemy_dmg)
-                    print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(enemy_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC, str(dodge_string))
-
-                    if ally[target].get_hp() == 0:
-                        print(bcolors.RED + ally[target].nickname, "został pokonany!" + bcolors.ENDC)
-                        del ally[target]
-                        alive -= 1
-                        defeated_players += 1
-
-                        if defeated_players == int(len(ally)) + 1:
-                            print(bcolors.RED + "Przeciwnicy zwyciężają!" + bcolors.ENDC)
-                            running = False
-                    break
-
-                elif enemy_choice == 1:
-                    spell, magic_dmg = enemy.choose_enemy_spell()
-                    enemy.reduce_mp(spell.cost)
-                    current_mp = enemy.get_mp()
-
-                    if spell.cost > current_mp:
-                        continue
-
-                    if spell.type == "white":
-                        enemy.heal(magic_dmg)
-                        print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(magic_dmg), " HP" + bcolors.ENDC)
-                        break
-
-                    elif spell.type == "black":
+            else:
+                while 1:
+                    enemy_choice = random.randrange(0, 2)
+                    if enemy_choice == 0:
                         target = random.randrange(0, alive)
+                        enemy_dmg = enemy.generate_damage()
                         dodge_endline = 13
                         if ally[target].temp_dodge == True:
                             ally[target].dodge_chance()
@@ -342,14 +348,14 @@ def battle(foe, ally):
                             dodge_endline += 15
 
                         if ally[target].get_dodge_chance() >= 0 and ally[target].get_dodge_chance() < dodge_endline:
-                            magic_dmg = 0
+                            enemy_dmg = 0
                             dodge_string = "(Unik)"
 
                         else:
                             dodge_string = ""
 
-                        ally[target].take_damage(magic_dmg)
-                        print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC, str(dodge_string))
+                        ally[target].take_damage(enemy_dmg)
+                        print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.RED + "Atak: " + bcolors.ENDC + str(enemy_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC, str(dodge_string))
 
                         if ally[target].get_hp() == 0:
                             print(bcolors.RED + ally[target].nickname, "został pokonany!" + bcolors.ENDC)
@@ -361,6 +367,54 @@ def battle(foe, ally):
                                 print(bcolors.RED + "Przeciwnicy zwyciężają!" + bcolors.ENDC)
                                 running = False
                         break
+
+                    elif enemy_choice == 1:
+                        spell, magic_dmg = enemy.choose_enemy_spell()
+                        enemy.reduce_mp(spell.cost)
+                        current_mp = enemy.get_mp()
+
+                        if spell.cost > current_mp:
+                            continue
+
+                        if spell.type == "white":
+
+                            if enemy.get_hp() == enemy.get_max_hp():
+                                continue
+
+                            enemy.heal(magic_dmg)
+                            print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + bcolors.BLUE + " uleczył się za " + str(magic_dmg), " HP" + bcolors.ENDC)
+                            break
+
+                        elif spell.type == "black":
+                            target = random.randrange(0, alive)
+                            dodge_endline = 13
+                            if ally[target].temp_dodge == True:
+                                ally[target].dodge_chance()
+                                dodge_endline += 67
+
+                            if ally[target].buff == "Wiatr":
+                                dodge_endline += 15
+
+                            if ally[target].get_dodge_chance() >= 0 and ally[target].get_dodge_chance() < dodge_endline:
+                                magic_dmg = 0
+                                dodge_string = "(Unik)"
+
+                            else:
+                                dodge_string = ""
+
+                            ally[target].take_damage(magic_dmg)
+                            print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC, str(dodge_string))
+
+                            if ally[target].get_hp() == 0:
+                                print(bcolors.RED + ally[target].nickname, "został pokonany!" + bcolors.ENDC)
+                                del ally[target]
+                                alive -= 1
+                                defeated_players += 1
+
+                                if defeated_players == int(len(ally)) + 1:
+                                    print(bcolors.RED + "Przeciwnicy zwyciężają!" + bcolors.ENDC)
+                                    running = False
+                            break
 
         for player in ally:
                 if player.character.buff == "Ziemia":
@@ -377,7 +431,7 @@ def battle(foe, ally):
 
                 elif player.character.buff == "Wiatr":
                     player.heal(20)
-                    player.mana_restore(45)
+                    player.mana_restore(40)
 
         for enemy in foe:
             enemy.heal(25)
