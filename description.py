@@ -58,7 +58,7 @@ def description(c):
             print(bcolors.RED + "\tObrażenia:   650" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  85" + bcolors.ENDC)
             print(bcolors.BOLD + "\nNatychmiastowe Zabójstwo" + bcolors.ENDC)
             print("(Umiejętność ma tylko 10% szans na powodzenie na każde brakujące 10% HP przeciwnika. W przypadku niepowodzenia, bohater traci 25% obecnego HP.)")
-            print(bcolors.RED + "\tObrażenia:   MAXIMUM" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  150" + bcolors.ENDC)
+            print(bcolors.RED + "\tObrażenia:   MAXIMUM" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  250" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break
@@ -151,12 +151,11 @@ def description(c):
             print(bcolors.BOLD + bcolors.BLUE + "\nWODA:" + bcolors.ENDC)
             print(bcolors.GREEN + "\t+10% bardziej efektywne leczenie" + bcolors.ENDC)
             print(bcolors.BLUE + "\tMana: +100 MP" + bcolors.ENDC)
-            print(bcolors.BLUE + "\tRegeneracja many: +10 MP")
             print(bcolors.BOLD + bcolors.RED + "\nOGIEŃ:" + bcolors.ENDC)
             print(bcolors.RED + "\tAtak: +25 DMG" + bcolors.ENDC)
             print(bcolors.PURPLE + "\tMoc umiejętności: +10%" + bcolors.ENDC)
             print(bcolors.BOLD + "\nWIATR:" + bcolors.ENDC)
-            print(bcolors.BLUE + "\tRegeneracja many: +15 MP" + bcolors.ENDC)
+            print(bcolors.BLUE + "\tRegeneracja many: +10 MP" + bcolors.ENDC)
             print(bcolors.YELLOW + "\tSzansa na unik: +15%")
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))

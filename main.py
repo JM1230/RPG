@@ -4,6 +4,7 @@ from inventory import Item
 from player import Player
 from description import description
 from battle import battle
+from battle2 import PvP
 from cube import cube
 from bcolors import bcolors
 import random
@@ -18,7 +19,7 @@ thunder = Spell("Błyskawica", 45, 300, "black")
 element_ball = Spell("Kula Żywiołów", 50, 385, "black")
 tempest = Spell("Nawałnica Stali", 70, 500, "black")
 penetration = Spell("Penetracja", 85, 650, "black")
-assassination = Spell("Natychmiastowe zabójstwo", 150, 9999999999999999999999999999, "black")
+assassination = Spell("Natychmiastowe zabójstwo", 250, 9999999999999999999999999999, "black")
 shout = Spell("'Tanio skóry nie sprzedam'", 200, 0, "black")
 carnage = Spell("Rzeź", 50, 250, "black")
 stone_fists = Spell("Kamienne Pięści", 40, 200, "black")
@@ -71,12 +72,19 @@ tank_wind = Person("Osiłek", "Wiatr", 4600, 300, 30, 0, 0, [], [shout, cure, bl
 fighter_wind = Person("Pięściarz", "Wiatr", 3750, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
 rogue_wind = Person("Łotrzyk", "Wiatr", 2900, 270, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
 
-# Przeciwnicy (tymczasowo)
-imp = Person("Imp", [], 2000, 200, 55, 0, 0, [], [smite], [])
-demon = Person("Demon", [], 8000, 400, 50, 0, 0, [], [ignite, meteor, cure], [])
-orc = Person("Ork", [], 7000, 150, 200, 0, 0, [], [power_hit], [])
+# Przeciwnicy
+goblin = Person("Goblin", [], 2100, 200, 55, 0, 0, [], [smite, power_hit], [])
+straznik = Person("Strażnik", [], 2300, 100, 70, 10, 0, [], [power_hit, smash], [])
+chlop = Person("Chłop", [], 2500, 100, 80, 0, 20, [], [power_hit, stun, stone_fists], [])
+elf = Person("Elf", [], 3000, 60, 130, 0, 0, [], [smite], [])
+gregory = Person("Gregory", [], 5000, 300, 100, 40, 0, [], [power_hit, stun, smash], [])
+imp = Person("Imp", [], 2000, 100, 55, 10, 0, [], [ignite], [])
+twoiia = Person("Twoiia", [], 4500, 400, 22, 80, 0, [], [ignite, smite, meteor, thunder, element_ball], [])
+maci = Person("Anton Maci", [], 6000, 200, 100, 10, 0, [], [power_hit, smash], [])
+moravon = Person("Moravon", [], 6000, 200, 100, 20, 0, [], [carnage], [])
 
-enemies = [imp, demon, orc]
+
+enemies = [elf, goblin, chlop, straznik, imp, twoiia, gregory, maci, moravon]
 
 # Menu
 while 1:
@@ -409,38 +417,105 @@ while i <= int(players_quantity):
             print(bcolors.BOLD + bcolors.RED + "Nie ma takiej klasy!\n" + bcolors.ENDC + bcolors.BOLD + "Wybierz klasę ponownie!" + bcolors.ENDC)
 
 print(bcolors.BOLD + "Gracz", "\t\t", "Klasa" + bcolors.ENDC)
+fighters = []
 
 for i in range(len(players)):
     print(players[i].nickname, "\t\t", players[i].character.cl, "-", players[i].character.buff)
+    fighters.append(players[i])
 
-# HISTORIA (tymczasowo brak, ale w tym miejscu musi zostać pierwszy raz wywołana)
+print("\n")
+while 1:
+    print("[1] Walka")
+    print("[2] Rzut Kostką")
+    print("[3] Odpoczynek")
+    x = input()
+    if x == '1':
+        print("[1] Gracz vs Gracz")
+        print("[2] Gracz vs NPC")
+        y = input()
+        if y == '1':
+            fighters1 = []
+            fighters2 = []
+            print(bcolors.BOLD + "Drużyna 1" + bcolors.ENDC)
+            while 1:
+                z = int(input(bcolors.BOLD + "Podaj ilość graczy: " + bcolors.ENDC))
+                if z <= int(players_quantity) or z >= int(players_quantity):
+                    break
 
-# Walka (tymczasowo - Walczyć będą ci gracze, którzy aktualnie znajdują się na polu, na którym wystąpiło zdarzenie walki[albo wszyscy, albo tylko jeden, później sie zdecyduje])
-q1 = random.randrange(0, 3)
-i = 0
-foe = []
-foe_list = [{}, {}, {}]
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nieprawidłowa liczba!\n" + bcolors.ENDC)
 
-while i <= q1:
-    enemy = random.choice(enemies)
-    foe_list[i] = Player([], enemy)
-    foe.append(foe_list[i])
-    i += 1
+            for k in range(len(players)):
+                print(str(k + 1) + ". " + players[k].nickname)
 
-q2 = random.randrange(0, int(players_quantity))      # tymczasowo do testów - gracze nie będą losowani
-i = 0
-ally = []
+            i = 1
+            while i <= z:
+                f = int(input("Gracz: "))
+                fighters1.append(players[f - 1])
+                i += 1
 
-while i <= q2:
-    player = random.choice(players)
-    ally.append(player)
+            print(bcolors.BOLD + "Drużyna 2" + bcolors.ENDC)
+            while 1:
+                q = int(input(bcolors.BOLD + "Podaj ilość graczy: " + bcolors.ENDC))
+                if q <= int(players_quantity) or q >= int(players_quantity):
+                    break
 
-    if i != 0:
-        if ally[i] == ally[i - 1]:
-            del ally[i]
-        else:
-            i += 1
-    else:
-        i += 1
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nieprawidłowa liczba!\n" + bcolors.ENDC)
 
-battle(foe, ally)
+            for k in range(len(players)):
+                print(str(k + 1) + ". " + players[k].nickname)
+
+            i = 1
+            while i <= q:
+                f = int(input("Gracz: "))
+                fighters2.append(players[f - 1])
+                i += 1
+
+            PvP(fighters2, fighters1)
+
+        elif y == '2':
+            fighters1 = []
+            fighters2 = []
+            while 1:
+                z = int(input(bcolors.BOLD + "Podaj ilość graczy: " + bcolors.ENDC))
+                if z <= int(players_quantity) or z >= int(players_quantity):
+                    break
+
+                else:
+                    print(bcolors.BOLD + bcolors.RED + "Nieprawidłowa liczba!\n" + bcolors.ENDC)
+
+            for k in range(len(players)):
+                print(str(k + 1) + ". " + players[k].nickname)
+
+            i = 1
+            while i <= z:
+                f = int(input("Gracz: "))
+                fighters1.append(players[f - 1])
+                i += 1
+
+            z = int(input(bcolors.BOLD + "Podaj ilość przeciwników: " + bcolors.ENDC))
+
+            for k in range(len(enemies)):
+                print(str(k + 1) + ". " + enemies[k].cl)
+
+            i = 1
+            while i <= z:
+                f = int(input("Przeciwnik: "))
+                fighters2.append(Player([], enemies[f - 1]))
+                i += 1
+
+            battle(fighters2, fighters1)
+
+    elif x == '2':
+        print("Wybierz ilość kostek")
+        print("[1] 2 kostki")
+        print("[2] 3 kostki")
+        print("[3] 4 kostki")
+        dice = int(input())
+        cube(dice)
+
+    elif x == '3':
+        for i in range(len(players)):
+            players[i].heal(11111111)
+            players[i].mana_restore(111111111111)

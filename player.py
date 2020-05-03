@@ -88,8 +88,13 @@ class Player:
         print("\n" + bcolors.RED + bcolors.BOLD + "\tCEL:" + bcolors.ENDC)
         for enemy in enemies:
             if enemy.get_hp() != 0:
-                print("        " + str(i) + ".", enemy.character.cl)
-                i += 1
+                if enemy.nickname != []:
+                    print("        " + str(i) + ".", enemy.nickname)
+                    i += 1
+
+                else:
+                    print("        " + str(i) + ".", enemy.character.cl)
+                    i += 1
 
         choice = int(input("\tWybierz cel: ")) - 1
         return choice
