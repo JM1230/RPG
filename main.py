@@ -7,7 +7,6 @@ from battle import battle
 from battle2 import PvP
 from cube import cube
 from bcolors import bcolors
-import random
 
 # Umiejętności
 power_hit = Spell("Potężne Uderzenie", 30, 180, "black")
@@ -35,42 +34,38 @@ health_potion = Item("Mikstura zdrowia", "potion", "Przywraca 150 HP", 150)
 mana_potion = Item("Mikstura many", "potion", "Przywraca 50 MP", 50)
 grenade = Item("Granat", "attack", "Zadaje 300 DMG", 300)
 
-player_items = [{"item": health_potion, "quantity": 2},
-                {"item": mana_potion, "quantity": 2},
-                {"item": grenade, "quantity": 1}]
-
 # Klasy postaci
-warrior_soil = Person("Wojownik", "Ziemia", 4250, 250, 45, 45, 0, [], [power_hit, smash, block], player_items)
-sorcerer_soil = Person("Mag", "Ziemia", 3150, 400, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_soil = Person("Skrytobójca", "Ziemia", 2900, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_soil = Person("Paladyn", "Ziemia", 3450, 300, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_soil = Person("Osiłek", "Ziemia", 4650, 300, 30, 0, 0, [], [shout, cure, block], player_items)
-fighter_soil = Person("Pięściarz", "Ziemia", 4000, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_soil = Person("Łotrzyk", "Ziemia", 2950, 190, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_soil = Person("Wojownik", "Ziemia", 4250, 250, 45, 45, 0, [], [power_hit, smash, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+sorcerer_soil = Person("Mag", "Ziemia", 3150, 400, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+assassin_soil = Person("Skrytobójca", "Ziemia", 2900, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+paladin_soil = Person("Paladyn", "Ziemia", 3450, 300, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+tank_soil = Person("Osiłek", "Ziemia", 4650, 300, 30, 0, 0, [], [shout, cure, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+fighter_soil = Person("Pięściarz", "Ziemia", 4000, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+rogue_soil = Person("Łotrzyk", "Ziemia", 2950, 190, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
 
-warrior_water = Person("Wojownik", "Woda", 3900, 350, 45, 45, 0, [], [power_hit, smash, block], player_items)
-sorcerer_water = Person("Mag", "Woda", 2800, 500, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_water = Person("Skrytobójca", "Woda", 2550, 450, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_water = Person("Paladyn", "Woda", 3100, 400, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_water = Person("Osiłek", "Woda", 4300, 400, 30, 0, 0, [], [shout, cure, block], player_items)
-fighter_water = Person("Pięściarz", "Woda", 3550, 250, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_water = Person("Łotrzyk", "Woda", 2600, 290, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_water = Person("Wojownik", "Woda", 3900, 350, 45, 45, 0, [], [power_hit, smash, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+sorcerer_water = Person("Mag", "Woda", 2800, 500, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+assassin_water = Person("Skrytobójca", "Woda", 2550, 450, 50, 55, 0, [], [smite, tempest, penetration, assassination], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+paladin_water = Person("Paladyn", "Woda", 3100, 400, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+tank_water = Person("Osiłek", "Woda", 4300, 400, 30, 0, 0, [], [shout, cure, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+fighter_water = Person("Pięściarz", "Woda", 3550, 250, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+rogue_water = Person("Łotrzyk", "Woda", 2600, 290, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
 
-warrior_fire = Person("Wojownik", "Ogień", 3900, 250, 70, 50, 0, [], [power_hit, smash, block], player_items)
-sorcerer_fire = Person("Mag", "Ogień", 2800, 400, 40, 99, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_fire = Person("Skrytobójca", "Ogień", 2550, 350, 75, 60, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_fire = Person("Paladyn", "Ogień", 3100, 300, 55, 40, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_fire = Person("Osiłek", "Ogień", 4300, 300, 55, 0, 0, [], [shout, cure, block], player_items)
-fighter_fire = Person("Pięściarz", "Ogień", 3650, 150, 105, 11, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_fire = Person("Łotrzyk", "Ogień", 2600, 190, 65, 22, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_fire = Person("Wojownik", "Ogień", 3900, 250, 70, 50, 0, [], [power_hit, smash, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+sorcerer_fire = Person("Mag", "Ogień", 2800, 400, 40, 99, 0, [], [ignite, meteor, smite, thunder, element_ball], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+assassin_fire = Person("Skrytobójca", "Ogień", 2550, 350, 75, 60, 0, [], [smite, tempest, penetration, assassination], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+paladin_fire = Person("Paladyn", "Ogień", 3100, 300, 55, 40, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+tank_fire = Person("Osiłek", "Ogień", 4300, 300, 55, 0, 0, [], [shout, cure, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+fighter_fire = Person("Pięściarz", "Ogień", 3650, 150, 105, 11, 0, [], [power_hit, carnage, stone_fists, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+rogue_fire = Person("Łotrzyk", "Ogień", 2600, 190, 65, 22, 0, [], [ignite, HP_steal, MP_steal, stun], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
 
-warrior_wind = Person("Wojownik", "Wiatr", 3900, 250, 45, 45, 0, [], [power_hit, smash, block], player_items)
-sorcerer_wind = Person("Mag", "Wiatr", 2800, 400, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_wind = Person("Skrytobójca", "Wiatr", 2550, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_wind = Person("Paladyn", "Wiatr", 3100, 300, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_wind = Person("Osiłek", "Wiatr", 4300, 300, 30, 0, 0, [], [shout, cure, block], player_items)
-fighter_wind = Person("Pięściarz", "Wiatr", 3650, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_wind = Person("Łotrzyk", "Wiatr", 2700, 190, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_wind = Person("Wojownik", "Wiatr", 3900, 250, 45, 45, 0, [], [power_hit, smash, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+sorcerer_wind = Person("Mag", "Wiatr", 2800, 400, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+assassin_wind = Person("Skrytobójca", "Wiatr", 2550, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+paladin_wind = Person("Paladyn", "Wiatr", 3100, 300, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+tank_wind = Person("Osiłek", "Wiatr", 4300, 300, 30, 0, 0, [], [shout, cure, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+fighter_wind = Person("Pięściarz", "Wiatr", 3650, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
+rogue_wind = Person("Łotrzyk", "Wiatr", 2700, 190, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
 
 # Przeciwnicy
 goblin = Person("Goblin", [], 2100, 200, 55, 0, 0, [], [smite, power_hit], [])
@@ -517,5 +512,5 @@ while 1:
 
     elif x == '3':
         for i in range(len(players)):
-            players[i].heal(11111111)
+            players[i].heal(11111111111)
             players[i].mana_restore(111111111111)
