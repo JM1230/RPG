@@ -195,13 +195,4 @@ class Player:
         magic_choice = random.randrange(0, len(self.magic))
         spell = self.magic[magic_choice]
         magic_dmg = spell.generate_damage()
-
-        pct = self.hp / self.maxhp * 100
-
-        if self.mp < spell.cost:
-            return spell, 0
-
-        if spell.type == "white" and pct > 50:
-            self.choose_enemy_spell()
-
         return spell, magic_dmg

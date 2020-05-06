@@ -15,12 +15,12 @@ smash = Spell("Miazga", 40, 220, "black")
 ignite = Spell("Podpalenie", 30, 110, "black")
 meteor = Spell("Meteor", 40, 200, "black")
 smite = Spell("Porażenie", 35, 190, "black")
-thunder = Spell("Błyskawica", 45, 300, "black")
-element_ball = Spell("Kula Żywiołów", 50, 385, "black")
+thunder = Spell("Błyskawica", 45, 280, "black")
+element_ball = Spell("Kula Żywiołów", 50, 340, "black")
 tempest = Spell("Nawałnica Stali", 70, 500, "black")
 penetration = Spell("Penetracja", 85, 650, "black")
 assassination = Spell("Natychmiastowe zabójstwo", 250, 9999999999999999999999999999, "black")
-shout = Spell("'Tanio skóry nie sprzedam'", 200, 0, "black")
+shout = Spell("'Tanio skóry nie sprzedam'", 220, 0, "black")
 carnage = Spell("Rzeź", 50, 250, "black")
 stone_fists = Spell("Kamienne Pięści", 40, 200, "black")
 cure = Spell("Uleczenie", 55, 300, "white")
@@ -28,7 +28,7 @@ heal = Spell("Uzdrowienie", 200, 9999999999999999999999999999999, "white")
 block = Spell("Garda", 20, 0, "block")
 HP_steal = Spell("Kradzież życia", 50, 250, "HP steal")
 MP_steal = Spell("Kradzież many", 25, 50, "MP steal")
-stun = Spell("Ogłuszenie", 50, 0, "stun")
+stun = Spell("Ogłuszenie", 120, 0, "stun")
 
 # Przedmioty
 health_potion = Item("Mikstura zdrowia", "potion", "Przywraca 150 HP", 150)
@@ -40,43 +40,43 @@ player_items = [{"item": health_potion, "quantity": 2},
                 {"item": grenade, "quantity": 1}]
 
 # Klasy postaci
-warrior_soil = Person("Wojownik", "Ziemia", 4350, 300, 35, 45, 0, [], [power_hit, smash, block], player_items)
-sorcerer_soil = Person("Mag", "Ziemia", 3150, 600, 15, 110, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_soil = Person("Skrytobójca", "Ziemia", 3000, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_soil = Person("Paladyn", "Ziemia", 3450, 400, 25, 45, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_soil = Person("Osiłek", "Ziemia", 4950, 300, 30, 0, 0, [], [shout, cure, block], player_items)
-fighter_soil = Person("Pięściarz", "Ziemia", 4100, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_soil = Person("Łotrzyk", "Ziemia", 3250, 270, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_soil = Person("Wojownik", "Ziemia", 4250, 250, 45, 45, 0, [], [power_hit, smash, block], player_items)
+sorcerer_soil = Person("Mag", "Ziemia", 3150, 400, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_soil = Person("Skrytobójca", "Ziemia", 2900, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
+paladin_soil = Person("Paladyn", "Ziemia", 3450, 300, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_soil = Person("Osiłek", "Ziemia", 4650, 300, 30, 0, 0, [], [shout, cure, block], player_items)
+fighter_soil = Person("Pięściarz", "Ziemia", 4000, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
+rogue_soil = Person("Łotrzyk", "Ziemia", 2950, 190, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
 
-warrior_water = Person("Wojownik", "Woda", 4000, 400, 35, 45, 0, [], [power_hit, smash, block], player_items)
-sorcerer_water = Person("Mag", "Woda", 2800, 700, 15, 110, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_water = Person("Skrytobójca", "Woda", 2650, 450, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_water = Person("Paladyn", "Woda", 3100, 500, 25, 45, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_water = Person("Osiłek", "Woda", 4600, 400, 30, 0, 0, [], [shout, cure, block], player_items)
-fighter_water = Person("Pięściarz", "Woda", 3750, 250, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_water = Person("Łotrzyk", "Woda", 2900, 370, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_water = Person("Wojownik", "Woda", 3900, 350, 45, 45, 0, [], [power_hit, smash, block], player_items)
+sorcerer_water = Person("Mag", "Woda", 2800, 500, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_water = Person("Skrytobójca", "Woda", 2550, 450, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
+paladin_water = Person("Paladyn", "Woda", 3100, 400, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_water = Person("Osiłek", "Woda", 4300, 400, 30, 0, 0, [], [shout, cure, block], player_items)
+fighter_water = Person("Pięściarz", "Woda", 3550, 250, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
+rogue_water = Person("Łotrzyk", "Woda", 2600, 290, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
 
-warrior_fire = Person("Wojownik", "Ogień", 4000, 300, 50, 50, 0, [], [power_hit, smash, block], player_items)
-sorcerer_fire = Person("Mag", "Ogień", 2800, 600, 40, 121, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_fire = Person("Skrytobójca", "Ogień", 2650, 350, 75, 60, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_fire = Person("Paladyn", "Ogień", 3100, 400, 50, 50, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_fire = Person("Osiłek", "Ogień", 4600, 300, 55, 0, 0, [], [shout, cure, block], player_items)
-fighter_fire = Person("Pięściarz", "Ogień", 3750, 150, 105, 11, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_fire = Person("Łotrzyk", "Ogień", 2900, 270, 65, 22, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_fire = Person("Wojownik", "Ogień", 3900, 250, 70, 50, 0, [], [power_hit, smash, block], player_items)
+sorcerer_fire = Person("Mag", "Ogień", 2800, 400, 40, 99, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_fire = Person("Skrytobójca", "Ogień", 2550, 350, 75, 60, 0, [], [smite, tempest, penetration, assassination], player_items)
+paladin_fire = Person("Paladyn", "Ogień", 3100, 300, 55, 40, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_fire = Person("Osiłek", "Ogień", 4300, 300, 55, 0, 0, [], [shout, cure, block], player_items)
+fighter_fire = Person("Pięściarz", "Ogień", 3650, 150, 105, 11, 0, [], [power_hit, carnage, stone_fists, block], player_items)
+rogue_fire = Person("Łotrzyk", "Ogień", 2600, 190, 65, 22, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
 
-warrior_wind = Person("Wojownik", "Wiatr", 4000, 300, 35, 45, 0, [], [power_hit, smash, block], player_items)
-sorcerer_wind = Person("Mag", "Wiatr", 2800, 600, 15, 110, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
-assassin_wind = Person("Skrytobójca", "Wiatr", 2650, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
-paladin_wind = Person("Paladyn", "Wiatr", 3100, 400, 25, 45, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
-tank_wind = Person("Osiłek", "Wiatr", 4600, 300, 30, 0, 0, [], [shout, cure, block], player_items)
-fighter_wind = Person("Pięściarz", "Wiatr", 3750, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
-rogue_wind = Person("Łotrzyk", "Wiatr", 2900, 270, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
+warrior_wind = Person("Wojownik", "Wiatr", 3900, 250, 45, 45, 0, [], [power_hit, smash, block], player_items)
+sorcerer_wind = Person("Mag", "Wiatr", 2800, 400, 15, 90, 0, [], [ignite, meteor, smite, thunder, element_ball], player_items)
+assassin_wind = Person("Skrytobójca", "Wiatr", 2550, 350, 50, 55, 0, [], [smite, tempest, penetration, assassination], player_items)
+paladin_wind = Person("Paladyn", "Wiatr", 3100, 300, 30, 35, 0, [], [power_hit, ignite, meteor, thunder, heal, cure], player_items)
+tank_wind = Person("Osiłek", "Wiatr", 4300, 300, 30, 0, 0, [], [shout, cure, block], player_items)
+fighter_wind = Person("Pięściarz", "Wiatr", 3650, 150, 80, 10, 0, [], [power_hit, carnage, stone_fists, block], player_items)
+rogue_wind = Person("Łotrzyk", "Wiatr", 2700, 190, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], player_items)
 
 # Przeciwnicy
 goblin = Person("Goblin", [], 2100, 200, 55, 0, 0, [], [smite, power_hit], [])
 straznik = Person("Strażnik", [], 2300, 100, 70, 10, 0, [], [power_hit, smash], [])
 chlop = Person("Chłop", [], 2500, 100, 80, 0, 20, [], [power_hit, stun, stone_fists], [])
-elf = Person("Elf", [], 3000, 60, 130, 0, 0, [], [smite], [])
+elf = Person("Elf", [], 3000, 60, 100, 0, 0, [], [cure, ignite], [])
 gregory = Person("Gregory", [], 5000, 300, 100, 40, 0, [], [power_hit, stun, smash], [])
 imp = Person("Imp", [], 2000, 100, 55, 10, 0, [], [ignite], [])
 twoiia = Person("Twoiia", [], 4500, 400, 22, 80, 0, [], [ignite, smite, meteor, thunder, element_ball], [])
@@ -439,7 +439,7 @@ while 1:
             print(bcolors.BOLD + "Drużyna 1" + bcolors.ENDC)
             while 1:
                 z = int(input(bcolors.BOLD + "Podaj ilość graczy: " + bcolors.ENDC))
-                if z <= int(players_quantity) or z >= int(players_quantity):
+                if z <= int(players_quantity) - 1 or z > 0:
                     break
 
                 else:
@@ -457,7 +457,7 @@ while 1:
             print(bcolors.BOLD + "Drużyna 2" + bcolors.ENDC)
             while 1:
                 q = int(input(bcolors.BOLD + "Podaj ilość graczy: " + bcolors.ENDC))
-                if q <= int(players_quantity) or q >= int(players_quantity):
+                if q <= int(players_quantity) - 1 or q > 0:
                     break
 
                 else:

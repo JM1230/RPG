@@ -378,11 +378,12 @@ def battle(foe, ally):
 
                     elif enemy_choice == 1:
                         spell, magic_dmg = enemy.choose_enemy_spell()
-                        enemy.reduce_mp(spell.cost)
                         current_mp = enemy.get_mp()
 
                         if spell.cost > current_mp:
                             continue
+
+                        enemy.reduce_mp(spell.cost)
 
                         if spell.type == "white":
                             enemy.heal(magic_dmg)

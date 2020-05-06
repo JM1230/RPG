@@ -4,8 +4,8 @@ def description(c):
     while 1:
         if c == '1':
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "WOJOWNIK\n")
-            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "4000" + bcolors.ENDC)
-            print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "35" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "3900" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "45" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "45" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
             print("Wojownik charakteryzuje się wysoką wytrzymałością oraz wysokimi obrażeniami. Przystosowany jest do dłuższych walk.")
@@ -24,7 +24,7 @@ def description(c):
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "MAG\n")
             print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "2800" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "15" + bcolors.ENDC)
-            print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "110" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "90" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
             print("Niska wytrzymałość oraz bezużyteczny atak podstawowy maga są rekompensowane przez ogromne obrażenia umiejętności.")
             print(bcolors.BOLD + "\n\nUMIEJĘTNOŚCI:" + bcolors.ENDC)
@@ -35,16 +35,16 @@ def description(c):
             print(bcolors.BOLD + "\nPorażenie" + bcolors.ENDC)
             print(bcolors.RED + "\tObrażenia:   190" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  35" + bcolors.ENDC)
             print(bcolors.BOLD + "\nBłyskawica" + bcolors.ENDC)
-            print(bcolors.RED + "\tObrażenia:   300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  45" + bcolors.ENDC)
+            print(bcolors.RED + "\tObrażenia:   280" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  45" + bcolors.ENDC)
             print(bcolors.BOLD + "\nKula Żywiołów" + bcolors.ENDC)
-            print(bcolors.RED + "\tObrażenia:   385" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
+            print(bcolors.RED + "\tObrażenia:   340" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  50" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break
 
         if c == '3':
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "SKRYTOBÓJCA\n")
-            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "2650" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "2550" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "50" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "55" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
@@ -66,8 +66,8 @@ def description(c):
         if c == '4':
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "PALADYN\n")
             print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "3100" + bcolors.ENDC)
-            print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "25" + bcolors.ENDC)
-            print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "45" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "30" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "35" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
             print("Święty rycerz, który zadaje wysokie obrażenia za pomocą swoich umiejętności oraz z możliwością leczenia, świetnie nadaje sie do dłuższych walk.")
             print(bcolors.BOLD + "\n\nUMIEJĘTNOŚCI:" + bcolors.ENDC)
@@ -78,7 +78,7 @@ def description(c):
             print(bcolors.BOLD + "\nMeteor" + bcolors.ENDC)
             print(bcolors.RED + "\tObrażenia:   200" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  40" + bcolors.ENDC)
             print(bcolors.BOLD + "\nBłyskawica" + bcolors.ENDC)
-            print(bcolors.RED + "\tObrażenia:   300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  45" + bcolors.ENDC)
+            print(bcolors.RED + "\tObrażenia:   280" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  45" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUleczenie" + bcolors.ENDC)
             print(bcolors.GREEN + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  55" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUzdrowienie" + bcolors.ENDC)
@@ -89,14 +89,14 @@ def description(c):
 
         if c == '5':
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "OSIŁEK\n")
-            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "4600" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "4300" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "30" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "0" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
             print("Bardzo wysoka wytrzymałość osiłków czyni ich trudnymi do zabicia, ale sami nie zadają wysokich obrażeń.")
             print(bcolors.BOLD + "\n\nUMIEJĘTNOŚCI:" + bcolors.ENDC)
             print(bcolors.BOLD + "\n'Tanio skóry nie sprzedam'" + bcolors.ENDC)
-            print(bcolors.RED + "\tObrażenia:   15% obecnego HP bohatera" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  200" + bcolors.ENDC)
+            print(bcolors.RED + "\tObrażenia:   15% obecnego HP bohatera" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  220" + bcolors.ENDC)
             print(bcolors.BOLD + "\nUleczenie" + bcolors.ENDC)
             print(bcolors.GREEN + "\tRegeneracja: 300" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  55" + bcolors.ENDC)
 
@@ -105,7 +105,7 @@ def description(c):
 
         if c == '6':
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "PIĘŚCIARZ\n")
-            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "3750" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "3650" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "80" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "20" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
@@ -125,7 +125,7 @@ def description(c):
 
         if c == '7':
             print(bcolors.BOLD + "KLASA: " + bcolors.ENDC + "ŁOTRZYK\n")
-            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "2900" + bcolors.ENDC)
+            print(bcolors.BOLD + bcolors.GREEN + "ZDROWIE:            " + bcolors.ENDC + bcolors.GREEN + "2700" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.RED + "ATAK:               " + bcolors.ENDC + bcolors.RED + "40" + bcolors.ENDC)
             print(bcolors.BOLD + bcolors.BLUE + "MOC UMIEJĘTNOŚCI:   " + bcolors.ENDC + bcolors.BLUE + "20" + bcolors.ENDC)
             print(bcolors.BOLD + "\n\nOPIS:" + bcolors.ENDC)
@@ -138,7 +138,7 @@ def description(c):
             print(bcolors.BOLD + "\nKradzież many" + bcolors.ENDC)
             print(bcolors.PURPLE + "\tKradzież:    50 MP" + bcolors.ENDC + bcolors.BLUE + "\n\tKoszt many:  25" + bcolors.ENDC)
             print(bcolors.BOLD + "\nOgłuszenie" + bcolors.ENDC)
-            print("\tOgłusza przeciwnika na czas jednej rundy" + bcolors.BLUE + "\n\tKoszt many:  20" + bcolors.ENDC)
+            print("\tOgłusza przeciwnika na czas jednej rundy" + bcolors.BLUE + "\n\tKoszt many:  120" + bcolors.ENDC)
 
             x = str(input(bcolors.ENDC + "\n\n\nAby powrócić, naciśnij dowolny przycisk"))
             break
