@@ -383,6 +383,9 @@ def battle(foe, ally):
                         if spell.cost > current_mp:
                             continue
 
+                        if spell.type == "white" and enemy.get_hp() >= enemy.get_max_hp() / 2:
+                            continue
+
                         enemy.reduce_mp(spell.cost)
 
                         if spell.type == "white":
@@ -442,6 +445,13 @@ def battle(foe, ally):
 
                             ally[target].take_damage(magic_dmg)
                             print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + " => " + bcolors.BOLD + ally[target].nickname + bcolors.ENDC, str(dodge_string))
+                            break
+
+                        elif spell.type == "snap":
+                            for player in ally:
+                                player.take_damage(magic_dmg)
+                                print(bcolors.BOLD + bcolors.RED + enemy.character.cl + bcolors.ENDC + ": " + bcolors.BLUE + spell.name + ": " + bcolors.ENDC + str(magic_dmg) + " DMG => " + bcolors.BOLD + player.nickname + bcolors.ENDC)
+                            break
 
         for player in ally:
                 if player.character.buff == "Ziemia":

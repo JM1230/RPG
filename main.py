@@ -28,6 +28,7 @@ block = Spell("Garda", 20, 0, "block")
 HP_steal = Spell("Kradzież życia", 50, 250, "HP steal")
 MP_steal = Spell("Kradzież many", 25, 50, "MP steal")
 stun = Spell("Ogłuszenie", 120, 0, "stun")
+snap = Spell("Snap", 175, 420, "snap")
 
 # Przedmioty
 health_potion = Item("Mikstura zdrowia", "potion", "Przywraca 150 HP", 150)
@@ -68,18 +69,18 @@ fighter_wind = Person("Pięściarz", "Wiatr", 3650, 150, 80, 10, 0, [], [power_h
 rogue_wind = Person("Łotrzyk", "Wiatr", 2700, 190, 40, 20, 0, [], [ignite, HP_steal, MP_steal, stun], [{"item": health_potion, "quantity": 2}, {"item": mana_potion, "quantity": 2}, {"item": grenade, "quantity": 1}])
 
 # Przeciwnicy
-goblin = Person("Goblin", [], 2100, 200, 55, 0, 0, [], [smite, power_hit], [])
 straznik = Person("Strażnik", [], 2300, 100, 70, 10, 0, [], [power_hit, smash], [])
-chlop = Person("Chłop", [], 2500, 100, 80, 0, 20, [], [power_hit, stun, stone_fists], [])
-elf = Person("Elf", [], 3000, 60, 100, 0, 0, [], [cure, ignite], [])
-gregory = Person("Gregory", [], 5000, 300, 100, 40, 0, [], [power_hit, stun, smash], [])
+informer = Person("Donosiciel", [], 1000, 0, 100, 0, 0, [], [power_hit], [])
+chlop = Person("Chłop", [], 2500, 100, 80, 20, 0, [], [power_hit, stun, stone_fists], [])
+wolf = Person("Wilk", [], 2000, 0, 170, 0, 0, [], [carnage], [])
+kruszynianka = Person("Kruszynianka", [], 5000, 100, 50, 20, 0, [], [power_hit, smash, stun, smite], [])
 imp = Person("Imp", [], 2000, 100, 55, 10, 0, [], [ignite], [])
-twoiia = Person("Twoiia", [], 4500, 400, 22, 80, 0, [], [ignite, smite, meteor, thunder, element_ball], [])
-maci = Person("Anton Maci", [], 6000, 200, 100, 10, 0, [], [power_hit, smash], [])
-moravon = Person("Moravon", [], 6000, 200, 100, 20, 0, [], [carnage], [])
+lucy = Person("Lucyna", [], 4500, 400, 22, 80, 0, [], [ignite, smite, meteor, thunder, element_ball, cure], [])
+patus = Person("Anton Maci", [], 6000, 200, 100, 10, 0, [], [power_hit, smash], [])
+boss = Person("Rycydeusz", [], 7000, 700, 175, 50, 0, [], [carnage, stun, heal, snap], [])
 
 
-enemies = [elf, goblin, chlop, straznik, imp, twoiia, gregory, maci, moravon]
+enemies = [wolf, chlop, straznik, informer, imp, kruszynianka, lucy, patus, boss]
 
 # Menu
 while 1:
