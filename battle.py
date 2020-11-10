@@ -98,101 +98,16 @@ def battle(foe, ally):
                             enemy = player.choose_target(foe)
 
                             if spell.name == "Natychmiastowe zabójstwo":
-                                chance = random.randrange(0, 10)
-                                if foe[enemy].get_hp() == foe[enemy].get_max_hp():
+                                chance = random.randrange(0, 100)
+
+                                if chance >= 0 and chance < (100 - ((foe[enemy].get_hp() * 100) / foe[enemy].get_max_hp())):
+                                    foe[enemy].take_damage(magic_dmg)
+                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
+                                    
+                                else:
                                     print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
                                     dmg = int(player.get_hp() / 4)
                                     player.take_damage(dmg)
-
-                                elif foe[enemy].get_hp() <= int(0.9 * foe[enemy].get_max_hp()):
-                                    if foe[enemy].get_hp() <= int(0.8 * foe[enemy].get_max_hp()):
-                                        if foe[enemy].get_hp() <= int(0.7 * foe[enemy].get_max_hp()):
-                                            if foe[enemy].get_hp() <= int(0.6 * foe[enemy].get_max_hp()):
-                                                if foe[enemy].get_hp() <= int(0.5 * foe[enemy].get_max_hp()):
-                                                    if foe[enemy].get_hp() <= int(0.4 * foe[enemy].get_max_hp()):
-                                                        if foe[enemy].get_hp() <= int(0.3 * foe[enemy].get_max_hp()):
-                                                            if foe[enemy].get_hp() <= int(0.2 * foe[enemy].get_max_hp()):
-                                                                if foe[enemy].get_hp() <= int(0.1 * foe[enemy].get_max_hp()):
-                                                                    if chance >= 0 and chance < 9:
-                                                                        foe[enemy].take_damage(magic_dmg)
-                                                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                                                    else:
-                                                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                                                        dmg = int(player.get_hp() / 4)
-                                                                        player.take_damage(dmg)
-                                                            else:
-                                                                if chance >= 0 and chance < 8:
-                                                                    foe[enemy].take_damage(magic_dmg)
-                                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                                                else:
-                                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                                                    dmg = int(player.get_hp() / 4)
-                                                                    player.take_damage(dmg)
-                                                        else:
-                                                            if chance >= 0 and chance < 7:
-                                                                foe[enemy].take_damage(magic_dmg)
-                                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                                            else:
-                                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                                                dmg = int(player.get_hp() / 4)
-                                                                player.take_damage(dmg)
-                                                    else:
-                                                        if chance >= 0 and chance < 6:
-                                                            foe[enemy].take_damage(magic_dmg)
-                                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                                        else:
-                                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                                            dmg = int(player.get_hp() / 4)
-                                                            player.take_damage(dmg)
-                                                else:
-                                                    if chance >= 0 and chance < 5:
-                                                        foe[enemy].take_damage(magic_dmg)
-                                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                                    else:
-                                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                                        dmg = int(player.get_hp() / 4)
-                                                        player.take_damage(dmg)
-                                            else:
-                                                if chance >= 0 and chance < 4:
-                                                    foe[enemy].take_damage(magic_dmg)
-                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                                else:
-                                                    print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                                    dmg = int(player.get_hp() / 4)
-                                                    player.take_damage(dmg)
-                                        else:
-                                            if chance >= 0 and chance < 3:
-                                                foe[enemy].take_damage(magic_dmg)
-                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                            else:
-                                                print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                                dmg = int(player.get_hp() / 4)
-                                                player.take_damage(dmg)
-                                    else:
-                                        if chance == 0 or chance == 1:
-                                            foe[enemy].take_damage(magic_dmg)
-                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                        else:
-                                            print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                            dmg = int(player.get_hp() / 4)
-                                            player.take_damage(dmg)
-                                else:
-                                    if chance == 0:
-                                        foe[enemy].take_damage(magic_dmg)
-                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona powodzeniem!" + bcolors.ENDC)
-
-                                    else:
-                                        print(bcolors.BOLD + player.nickname + bcolors.ENDC + ": " + bcolors.RED + "Próba zabójstwa zakończona niepowodzeniem!" + bcolors.ENDC)
-                                        dmg = int(player.get_hp() / 4)
-                                        player.take_damage(dmg)
 
                             elif spell.name == "'Tanio skóry nie sprzedam'":
                                 if foe[enemy].get_dodge_chance() >= 0 and foe[enemy].get_dodge_chance() < 13:
